@@ -15,7 +15,7 @@ export default function Workouts() {
 
             <Header />
 
-            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6' pb='6'>
 
                 <Sidebar />
 
@@ -24,15 +24,15 @@ export default function Workouts() {
 
                     <SimpleGrid columns={isWideVersion ? 2 : 1} spacing={4}>
 
-                        <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                        <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                             <Box position='relative' mb='3' borderRadius='8' overflow='hidden'>
-                                <Icon position='absolute' top='6' left='6' as={RiPlayCircleLine} fontSize='40' />
+                                <Icon position='absolute' top={['4', '6']} left={['4', '6']} as={RiPlayCircleLine} fontSize='40' />
                                 <img src="/treino-mobilidade-iniciante.jpg" alt="Mobilidade Iniciante" />
                             </Box>
                             <Flex justifyContent='space-between'>
 
                                 <HStack color='gray.200'>
-                                    <Text as='small' fontWeight='bold'>Mobilidade</Text>
+                                    {isWideVersion && <Text as='small' fontWeight='bold'>Mobilidade</Text>}
                                     <Flex alignItems='center'>
                                         <Icon mr='1' as={RiTimeLine} />
                                         <Text as='small'>5 min.</Text>
@@ -48,7 +48,7 @@ export default function Workouts() {
                                     <Flex
                                         flex='1'
                                         height='1'
-                                        width='20'
+                                        width={['8', '20']}
                                         bg='gray.100'
                                         borderRadius='full'
                                         overflow='hidden'
@@ -62,18 +62,17 @@ export default function Workouts() {
                                 </HStack>
 
                             </Flex>
-
                         </Box>
 
-                        <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                        <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                             <Box position='relative' mb='3' borderRadius='8' overflow='hidden'>
-                                <Icon position='absolute' top='6' left='6' as={RiPlayCircleLine} fontSize='40' />
+                                <Icon position='absolute' top={['4', '6']} left={['4', '6']} as={RiPlayCircleLine} fontSize='40' />
                                 <img src="/treino-mobilidade-iniciante.jpg" alt="Mobilidade Iniciante" />
                             </Box>
                             <Flex justifyContent='space-between'>
 
                                 <HStack color='gray.200'>
-                                    <Text as='small' fontWeight='bold'>Mobilidade</Text>
+                                    {isWideVersion && <Text as='small' fontWeight='bold'>Mobilidade</Text>}
                                     <Flex alignItems='center'>
                                         <Icon mr='1' as={RiTimeLine} />
                                         <Text as='small'>5 min.</Text>
@@ -89,7 +88,7 @@ export default function Workouts() {
                                     <Flex
                                         flex='1'
                                         height='1'
-                                        width='20'
+                                        width={['8', '20']}
                                         bg='gray.100'
                                         borderRadius='full'
                                         overflow='hidden'
@@ -103,18 +102,17 @@ export default function Workouts() {
                                 </HStack>
 
                             </Flex>
-
                         </Box>
 
-                        <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                        <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                             <Box position='relative' mb='3' borderRadius='8' overflow='hidden'>
-                                <Icon position='absolute' top='6' left='6' as={RiPlayCircleLine} fontSize='40' />
+                                <Icon position='absolute' top={['4', '6']} left={['4', '6']} as={RiPlayCircleLine} fontSize='40' />
                                 <img src="/treino-mobilidade-iniciante.jpg" alt="Mobilidade Iniciante" />
                             </Box>
                             <Flex justifyContent='space-between'>
 
                                 <HStack color='gray.200'>
-                                    <Text as='small' fontWeight='bold'>Mobilidade</Text>
+                                    {isWideVersion && <Text as='small' fontWeight='bold'>Mobilidade</Text>}
                                     <Flex alignItems='center'>
                                         <Icon mr='1' as={RiTimeLine} />
                                         <Text as='small'>5 min.</Text>
@@ -130,7 +128,7 @@ export default function Workouts() {
                                     <Flex
                                         flex='1'
                                         height='1'
-                                        width='20'
+                                        width={['8', '20']}
                                         bg='gray.100'
                                         borderRadius='full'
                                         overflow='hidden'
@@ -144,18 +142,17 @@ export default function Workouts() {
                                 </HStack>
 
                             </Flex>
-
                         </Box>
 
-                        <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                        <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                             <Box position='relative' mb='3' borderRadius='8' overflow='hidden'>
-                                <Icon position='absolute' top='6' left='6' as={RiPlayCircleLine} fontSize='40' />
+                                <Icon position='absolute' top={['4', '6']} left={['4', '6']} as={RiPlayCircleLine} fontSize='40' />
                                 <img src="/treino-mobilidade-iniciante.jpg" alt="Mobilidade Iniciante" />
                             </Box>
                             <Flex justifyContent='space-between'>
 
                                 <HStack color='gray.200'>
-                                    <Text as='small' fontWeight='bold'>Mobilidade</Text>
+                                    {isWideVersion && <Text as='small' fontWeight='bold'>Mobilidade</Text>}
                                     <Flex alignItems='center'>
                                         <Icon mr='1' as={RiTimeLine} />
                                         <Text as='small'>5 min.</Text>
@@ -171,7 +168,7 @@ export default function Workouts() {
                                     <Flex
                                         flex='1'
                                         height='1'
-                                        width='20'
+                                        width={['8', '20']}
                                         bg='gray.100'
                                         borderRadius='full'
                                         overflow='hidden'
@@ -185,8 +182,9 @@ export default function Workouts() {
                                 </HStack>
 
                             </Flex>
-
                         </Box>
+
+                        
 
                     </SimpleGrid>
 

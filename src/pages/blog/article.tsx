@@ -17,14 +17,14 @@ export default function Article() {
 
             <Header />
 
-            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6' pb='6'>
 
                 <Sidebar />
 
                 <Box flex='1' w='100%' maxWidth={1480}>
                     <Heading mb='8' size='lg' fontWeight='normal'><Link href='/blog' ><a><Box as='span' color='pink.400'>Blog</Box></a></Link> <Icon display='inline-block' pt='3' as={RiArrowRightSLine} />Praticar yoga e meditação</Heading>
 
-                    <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                    <Box p={['4', '8']} bg='gray.800' borderRadius='8' pb='4'>
 
                         <Box mb='3' borderRadius='8' overflow='hidden'>
                             <img width='100%' src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />

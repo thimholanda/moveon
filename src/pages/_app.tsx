@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SidebarDrawerProvider>
       <ChakraProvider resetCSS theme={theme}>
         <Component {...pageProps} />
-        <Box mt='20'></Box>
+        
       </ChakraProvider>
     </SidebarDrawerProvider>
     

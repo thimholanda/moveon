@@ -1,4 +1,5 @@
 import { Box, Img, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 export function Logo() {
     return (
@@ -6,7 +7,7 @@ export function Logo() {
         <Box
             width={64}
         >
-            <Img width='130px' src="/moveon-white-h.png" />
+            <Link href='/dashboard'><a><Img width='130px' src="/moveon-white-h.png" /></a></Link>
         </Box>
 
 

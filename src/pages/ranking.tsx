@@ -20,192 +20,194 @@ export default function Ranking() {
 
                 <Sidebar />
 
-                <Box flex='1' borderRadius='8' bg='gray.800' p='8'>
+                <Box flex='1' w='100%' maxWidth={1480}>
+                <Heading mb='8' size='lg' fontWeight='normal'>Ranking</Heading>
 
-                    <Flex mb='8' justify='space-between' align='center'>
-                        <Heading size='lg' fontWeight='normal'>Ranking</Heading>
-                    </Flex>
+                    <Box flex='1' borderRadius='8' bg='gray.800' p={['2','8']}>
 
-                    <>
-                        <Table colorScheme='whiteAlpha'>
-                            <Thead>
-                                <Tr>
-                                    <Th>
-                                        Posição
-                                    </Th>
-                                    <Th>Usuário</Th>
-                                    {isWideVersion && <Th>Move Cash</Th>}
-                                    {/* <Th width='8'></Th> */}
-                                </Tr>
-                            </Thead>
-                            <Tbody>
+                        <>
+                            <Table colorScheme='whiteAlpha'>
+                                <Thead>
+                                    <Tr>
+                                        <Th>
+                                            Posição
+                                        </Th>
+                                        <Th>Usuário</Th>
+                                        <Th>Move Cash</Th>
+                                        {/* <Th width='8'></Th> */}
+                                    </Tr>
+                                </Thead>
+                                <Tbody>
 
-                                <Tr>
-                                    <Td>
-                                        1º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            1º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        2º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            2º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        3º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            3º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        4º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            4º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        5º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            5º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        6º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            6º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        7º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            7º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        8º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            8º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        9º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>
+                                            9º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
-                                <Tr>
-                                    <Td>
-                                        10º lugar
-                                    </Td>
-                                    <Td>
-                                        <Box>
-                                            <Link color='pink.400' onMouseEnter={() => { }}>
-                                                <Text fontWeight='bold'>Rafael Passaro</Text>
-                                            </Link>
-                                        </Box>
-                                    </Td>
-                                    <Td>
-                                        <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
-                                    </Td>
-                                </Tr>
-
+                                    <Tr>
+                                        <Td>
+                                            10º lugar
+                                        </Td>
+                                        <Td>
+                                            <Box>
+                                                <Link color='pink.400' onMouseEnter={() => { }}>
+                                                    <Text fontWeight='bold'>Rafael Passaro</Text>
+                                                </Link>
+                                            </Box>
+                                        </Td>
+                                        <Td>
+                                            <Text color='gray.300' ><Icon as={RiCoinsLine} />200</Text>
+                                        </Td>
+                                    </Tr>
 
 
-                            </Tbody>
-                        </Table>
-                    </>
+
+                                </Tbody>
+                            </Table>
+                        </>
+                    </Box>
                 </Box>
+
+
             </Flex>
         </Flex>
     );

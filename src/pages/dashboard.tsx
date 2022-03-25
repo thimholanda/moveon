@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Box, Button, Flex, HStack, Icon, Img, SimpleGrid, Text, theme, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, HStack, Icon, Img, SimpleGrid, Text, theme, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Ri24HoursLine, RiAddLine, RiBarChartBoxLine, RiFileList3Line, RiFireLine, RiGift2Line, RiHandHeartLine, RiLiveLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 import { Header } from "../components/Header";
@@ -9,13 +9,18 @@ import Link from "next/link";
 
 export default function Dashboard() {
 
+    const isWideVersion = useBreakpointValue({
+        base: false,
+        lg: true
+    })
+
     return (
 
         <Flex direction='column' h='100vh'>
 
             <Header />
 
-            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6' pb='5'>
 
                 <Sidebar />
 
@@ -24,10 +29,10 @@ export default function Dashboard() {
 
                         <SimpleGrid w='100%' gap='4' minChildWidth='320px' alignItems='flex-start'>
 
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                                 <Text fontSize='lg' mb='5'>Pronto? Então, <strong>let{`'`}s move on!</strong></Text>
                                 <Box position='relative' mb='3' borderRadius='8' overflow='hidden'>
-                                    <Icon position='absolute' top='6' left='6' as={RiPlayCircleLine} fontSize='40' />
+                                    <Icon position='absolute' top={['4','6']} left={['4','6']} as={RiPlayCircleLine} fontSize='40' />
                                     <img src="/treino-mobilidade-iniciante.jpg" alt="Mobilidade Iniciante" />
                                 </Box>
                                 <Flex justifyContent='space-between'>
@@ -49,7 +54,7 @@ export default function Dashboard() {
                                         <Flex
                                             flex='1'
                                             height='1'
-                                            width='20'
+                                            width={['8','20']}
                                             bg='gray.100'
                                             borderRadius='full'
                                             overflow='hidden'
@@ -63,12 +68,11 @@ export default function Dashboard() {
                                     </HStack>
 
                                 </Flex>
-
                             </Box>
 
                             <Link href='/blog/article'>
                                 <a>
-                                    <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                                    <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                                         <Text fontSize='lg' mb='5'>Última matéria do blog</Text>
                                         <Box mb='3' borderRadius='8' overflow='hidden'>
                                             <img src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />
@@ -89,10 +93,10 @@ export default function Dashboard() {
 
                         <SimpleGrid w='100%' gap='4' minChildWidth='320px' alignItems='flex-start'>
 
-                            <Box position='relative' h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box position='relative' h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                                 <Text fontSize='lg' mb='5'>Histórico</Text>
 
-                                <SimpleGrid columns={2} spacing={4}>
+                                <SimpleGrid columns={[1,2]} spacing={4}>
 
                                     <Flex alignItems='center' justifyContent='space-between' bg='gray.900' height='80px' borderRadius='8' p='4'>
                                         <Flex direction='column'>
@@ -128,14 +132,10 @@ export default function Dashboard() {
 
                                 </SimpleGrid>
 
-                                <Box
-                                    position='absolute'
-                                    top='6'
-                                    right='8'
-                                >
-                                    <NextLink href={'/dashboard'} passHref>
+                                <NextLink href={'/dashboard'} passHref>
                                         <Button
                                             as='a'
+                                            mt='5'
                                             cursor='pointer'
                                             size='sm'
                                             fontSize='small'
@@ -144,11 +144,10 @@ export default function Dashboard() {
                                                 as={RiGift2Line} fontSize='20' />}>Resgatar prêmios
                                         </Button>
                                     </NextLink>
-                                </Box>
 
                             </Box>
 
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box h={isWideVersion ? '100%' : 'auto'} p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
                                 <Text fontSize='lg' mb='5'>Minhas conquistas (1)</Text>
                                 <HStack>
                                     <Flex
@@ -174,5 +173,6 @@ export default function Dashboard() {
             </Flex>
 
         </Flex>
+        
     );
 }

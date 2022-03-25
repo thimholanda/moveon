@@ -16,7 +16,7 @@ export default function Blog() {
 
             <Header />
 
-            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6' pb='6'>
 
                 <Sidebar />
 
@@ -27,7 +27,7 @@ export default function Blog() {
 
                         <Link href='/blog/article'>
                             <a>
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
 
                                 <Box mb='3' borderRadius='8' overflow='hidden'>
                                     <img src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />
@@ -45,7 +45,7 @@ export default function Blog() {
 
                         <Link href='/blog/article'>
                             <a>
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
 
                                 <Box mb='3' borderRadius='8' overflow='hidden'>
                                     <img src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />
@@ -63,7 +63,7 @@ export default function Blog() {
 
                         <Link href='/blog/article'>
                             <a>
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
 
                                 <Box mb='3' borderRadius='8' overflow='hidden'>
                                     <img src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />
@@ -81,7 +81,7 @@ export default function Blog() {
 
                         <Link href='/blog/article'>
                             <a>
-                            <Box h='100%' p={['6', '8']} bg='gray.800' borderRadius='8' pb='4'>
+                            <Box p={['2', '8']} bg='gray.800' borderRadius='8' pb='4'>
 
                                 <Box mb='3' borderRadius='8' overflow='hidden'>
                                     <img src="/yoga-meditacao.jpg" alt="Yoga e meditacao" />
