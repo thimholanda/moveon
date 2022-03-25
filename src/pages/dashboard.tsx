@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Box, Button, Flex, HStack, Icon, Img, SimpleGrid, Text, theme, useBreakpointValue, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Icon, Img, SimpleGrid, Text, theme, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Ri24HoursLine, RiAddLine, RiBarChartBoxLine, RiFileList3Line, RiFireLine, RiGift2Line, RiHandHeartLine, RiLiveLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 import { Header } from "../components/Header";
@@ -25,6 +25,7 @@ export default function Dashboard() {
                 <Sidebar />
 
                 <Box flex='1' w='100%' maxWidth={1480}>
+                <Heading mb='8' size='lg' fontWeight='normal'>Dashboard</Heading>
                     <VStack spacing='4'>
 
                         <SimpleGrid w='100%' gap='4' minChildWidth='320px' alignItems='flex-start'>

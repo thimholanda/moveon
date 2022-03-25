@@ -16,7 +16,7 @@ export default function Ranking() {
 
             <Header />
 
-            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6'>
+            <Flex width='100%' my='6' maxWidth={1480} mx='auto' px='6' pb='6'>
 
                 <Sidebar />
 
