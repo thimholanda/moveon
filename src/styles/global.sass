@@ -1,0 +1,39 @@
+.initial-slider
+    height: 100%
+
+    .slick-list
+        height: 100%
+
+    .slick-track
+        height: 100%
+        display: flex !important
+
+    .slick-slide
+        height: 100%
+
+        & > div
+            height: 100%
+
+    .slick-disabled
+        display: none
+
+.slick-dots
+    bottom: 30px !important
+
+    li button:before,
+    li.slick-active button:before
+        color: transparent
+        opacity: 1
+
+    li button:before
+        background-color: transparent
+        border: 2px solid #fff
+        border-radius: 50%
+        display: inline-block
+        height: 20px
+        width: 20px
+        color: rgba(0,0,0,0) !important
+        box-shadow: 0px 0px 15px 1px rgba(24,27,35, .7)
+
+    li.slick-active button:before
+        background-color: #fff

@@ -15,6 +15,7 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { reverse } from "dns/promises";
 import NextLink from "next/link";
 import {
   RiCoinsLine,
@@ -25,15 +26,18 @@ import {
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
+import { useHistory } from "../hooks/useHistory";
 import { useUserData } from "../hooks/useUserData";
 
-export default function Ranking() {
+export default function History() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
 
   const { name, money } = useUserData();
+  const { userHistories } = useHistory();
+  const reverseUserHistories = [...userHistories].reverse();
 
   return (
     <Flex direction="column" h="100vh">
@@ -44,7 +48,7 @@ export default function Ranking() {
 
         <Box flex="1" w="100%" maxWidth={1480}>
           <Heading mb="8" size="lg" fontWeight="normal">
-            Ranking
+            Histórico de acessos
           </Heading>
 
           <Box flex="1" borderRadius="8" bg="gray.800" p={["2", "8"]}>
@@ -52,29 +56,24 @@ export default function Ranking() {
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th>Posição</Th>
-                    <Th>Usuário</Th>
-                    <Th>Move Coins</Th>
+                    <Th>Data</Th>
+                    <Th>Ação</Th>
                     {/* <Th width='8'></Th> */}
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td>1º lugar</Td>
-                    <Td>
-                      <Box>
-                        <Link color="pink.400" onMouseEnter={() => {}}>
-                          <Text fontWeight="bold">{name}</Text>
-                        </Link>
-                      </Box>
-                    </Td>
-                    <Td>
-                      <Text color="gray.300">
-                        <Icon as={RiCoinsLine} />
-                        {money}
-                      </Text>
-                    </Td>
-                  </Tr>
+                  {!!userHistories &&
+                    reverseUserHistories.map((history) => {
+                      return (
+                        <Tr key={history.date + Math.random()}>
+                          <Td>{history.date}</Td>
+
+                          <Td>
+                            <Text color="gray.300">{history.action}</Text>
+                          </Td>
+                        </Tr>
+                      );
+                    })}
                 </Tbody>
               </Table>
             </>

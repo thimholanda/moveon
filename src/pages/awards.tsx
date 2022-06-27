@@ -1,9 +1,11 @@
 import {
   Box,
+  Button,
   Flex,
   Heading,
   HStack,
   Icon,
+  IconButton,
   Link,
   SimpleGrid,
   Table,
@@ -15,25 +17,29 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { reverse } from "dns/promises";
 import NextLink from "next/link";
 import {
+  RiCheckLine,
   RiCoinsLine,
   RiFireLine,
+  RiGiftLine,
   RiPlayCircleLine,
   RiTimeLine,
 } from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
+import { useHistory } from "../hooks/useHistory";
 import { useUserData } from "../hooks/useUserData";
 
-export default function Ranking() {
+export default function History() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
 
-  const { name, money } = useUserData();
+  const { hasAward } = useUserData();
 
   return (
     <Flex direction="column" h="100vh">
@@ -44,7 +50,7 @@ export default function Ranking() {
 
         <Box flex="1" w="100%" maxWidth={1480}>
           <Heading mb="8" size="lg" fontWeight="normal">
-            Ranking
+            Meus prêmios
           </Heading>
 
           <Box flex="1" borderRadius="8" bg="gray.800" p={["2", "8"]}>
@@ -52,29 +58,36 @@ export default function Ranking() {
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th>Posição</Th>
-                    <Th>Usuário</Th>
-                    <Th>Move Coins</Th>
+                    <Th>Ação</Th>
+                    <Th></Th>
                     {/* <Th width='8'></Th> */}
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td>1º lugar</Td>
-                    <Td>
-                      <Box>
-                        <Link color="pink.400" onMouseEnter={() => {}}>
-                          <Text fontWeight="bold">{name}</Text>
-                        </Link>
-                      </Box>
-                    </Td>
-                    <Td>
-                      <Text color="gray.300">
-                        <Icon as={RiCoinsLine} />
-                        {money}
-                      </Text>
-                    </Td>
-                  </Tr>
+                  {!hasAward && (
+                    <Tr>
+                      <Td>{"Você ainda não conquistou prêmios."}</Td>
+                      <Td></Td>
+                    </Tr>
+                  )}
+                  {!!hasAward && (
+                    <Tr>
+                      <Td>{"Parabéns! Você conquistou o prêmio!"}</Td>
+                      <Td>
+                        <Button
+                          type="button"
+                          py="5"
+                          cursor="pointer"
+                          size="sm"
+                          fontSize="lg"
+                          colorScheme="pink"
+                          rightIcon={<Icon as={RiGiftLine} fontSize="20" />}
+                        >
+                          Resgatar
+                        </Button>
+                      </Td>
+                    </Tr>
+                  )}
                 </Tbody>
               </Table>
             </>

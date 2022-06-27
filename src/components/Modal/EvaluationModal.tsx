@@ -1,0 +1,139 @@
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  Image,
+  SimpleGrid,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { RiCheckLine } from "react-icons/ri";
+
+import { Evaluation, useEvaluations } from "../../hooks/useEvaluations";
+import { useHistory, UserHistory } from "../../hooks/useHistory";
+import { useModal } from "../../hooks/useModal";
+import { Input } from "../Form/Input";
+
+export function EvaluationModal() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+  const { onClose } = useModal();
+  const { setEvaluation } = useEvaluations();
+  const { addToHistory, userHistories } = useHistory();
+
+  //   squats: string;
+  //   abs: string;
+  //   pushUps: string;
+  //   weight: string;
+
+  const [squats, setSquats] = useState("");
+  const [abs, setAbs] = useState("");
+  const [pushUps, setPushUps] = useState("");
+  const [weight, setWeight] = useState("");
+
+  function handleClose() {
+    const evaluation: Evaluation = {
+      squats,
+      abs,
+      pushUps,
+      weight,
+    };
+
+    const userHistory: UserHistory = {
+      action: "Enviou uma avaliação",
+    };
+
+    setEvaluation(evaluation);
+    addToHistory(userHistory);
+    onClose();
+  }
+  useEffect(() => {
+    console.log(userHistories);
+  }, [userHistories]);
+  return (
+    <>
+      <Flex
+        className="logo"
+        flexDirection={"column"}
+        w={100}
+        height={100}
+        bg={"white"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        borderRadius={10}
+        position={"absolute"}
+        left={"50%"}
+        top={"0"}
+        transform={"translateX(-50%) translateY(-50%)"}
+      >
+        <Box>
+          <Image
+            src={"/moveon-saude.jpg"}
+            alt="MoveOn Saúde"
+            width={68}
+            height={78}
+          />
+        </Box>
+      </Flex>
+
+      <Flex p={5} pt={20} direction={"column"} alignItems={"center"}>
+        <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
+          É a hora de registrar sua evolução!
+        </Text>
+        <Text mb={6} fontSize={"lg"} color={"gray.200"} textAlign={"center"}>
+          Marque o número máximo de repetições que consegue fazer em cada
+          exercício:
+        </Text>
+        <Flex as="form" width="100%" borderRadius={8} flexDir="column">
+          <SimpleGrid columns={isWideVersion ? 3 : 1} spacing={4} mb={6}>
+            <Input
+              isTransparent
+              name="height"
+              type="text"
+              label="Agachamentos"
+              onChange={(e) => setSquats(e.target.value)}
+            />
+            <Input
+              isTransparent
+              name="weight"
+              type="text"
+              label="Abdominais"
+              onChange={(e) => setAbs(e.target.value)}
+            />
+            <Input
+              isTransparent
+              name="genre"
+              type="text"
+              label="Flexões"
+              onChange={(e) => setPushUps(e.target.value)}
+            />
+          </SimpleGrid>
+          <Input
+            isTransparent
+            name="weight"
+            type="text"
+            label="Qual é o seu peso atual?"
+            onChange={(e) => setWeight(e.target.value)}
+          />
+        </Flex>
+      </Flex>
+      <Flex py={10} pt={4} alignItems={"center"} justifyContent={"center"}>
+        <Button
+          py="5"
+          cursor="pointer"
+          size="sm"
+          fontSize="lg"
+          colorScheme="pink"
+          rightIcon={<Icon as={RiCheckLine} fontSize="20" />}
+          onClick={handleClose}
+        >
+          Enviar
+        </Button>
+      </Flex>
+    </>
+  );
+}
