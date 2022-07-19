@@ -1,17 +1,13 @@
 import { Box, Button, Icon, Text, useBreakpointValue } from "@chakra-ui/react";
 import NextLink from "next/link";
-import {
-  RiArrowLeftSLine,
-  RiArrowRightLine,
-  RiArrowRightSLine,
-} from "react-icons/ri";
+import { RiArrowLeftSLine, RiArrowRightLine, RiArrowRightSLine } from "react-icons/ri";
 import Slider from "react-slick";
 
 import { InitialInstructionSlide } from "../components/InitialInstructionSlide/InitialInstructionSlide";
+import { InitialInstructionSlideArrow } from "../components/InitialInstructionSlide/InitialInstructionSlideArrow";
 
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import { InitialInstructionSlideArrow } from "../components/InitialInstructionSlide/InitialInstructionSlideArrow";
 
 export default function Instructions() {
   const isWideVersion = useBreakpointValue({
@@ -53,12 +49,12 @@ export default function Instructions() {
           mobileImage="/moveon-meditacao-mobile.jpg"
         >
           <Text fontSize={["md", "lg"]} textAlign={["center", "left"]}>
-            A Move On traz uma metodologia inovadora e exclusiva para você
-            revolucionar o seu estilo de vida com a aquisição de hábitos
-            saudáveis. Atividades físicas, meditações, leitura, respiração,
-            aulas ao vivo, dicas nutricionais e diversos outros conteúdos
-            relevantes associados ao bem-estar físico e mental, tudo em um só
-            lugar.
+            A move on traz uma metodologia inovadora e exclusiva para
+            revolucionar o seu estilo de vida com a incorporação de hábitos
+            saudáveis em sua rotina. Atividades físicas, meditações, leitura,
+            respiração, aulas ao vivo, dicas nutricionais e diversos outros
+            conteúdos relevantes associados ao bem-estar físico e mental, tudo
+            em um só lugar.
           </Text>
         </InitialInstructionSlide>
         <InitialInstructionSlide
@@ -66,7 +62,7 @@ export default function Instructions() {
           mobileImage="/moveon-alongamento-mobile.jpg"
         >
           <Text fontSize={["md", "lg"]} textAlign={["center", "left"]}>
-            Para facilitar o caminho rumo a uma vida mais saudável, utilizamos a
+            Para facilitar o caminho rumo à uma vida mais saudável, utilizamos a
             gamificação (estímulo por meio de jogos) e promovemos competições
             amistosas nas quais os participantes que obtiverem melhores
             resultados serão premiados. Criamos um ambiente divertido e
@@ -78,11 +74,11 @@ export default function Instructions() {
           desktopImage="/moveon-fitness.jpg"
           mobileImage="/moveon-fitness-mobile.jpg"
         >
-          <Text fontSize={["md", "lg"]} textAlign={["center", "left"]}>
-            Ao praticar as atividades, cumprir metas e receber recompensas o
-            usuário poderá ainda colaborar com o meio ambiente. A Move on e a
-            ONG Iniciativa verde, estão juntas no combate a crise climática e na
-            preservação dos nossos mananciais.
+          <Text fontSize={["md", "lg"]} textAlign={["center", "center"]}>
+            Ao praticar atividades e cumprir metas, além das recompensas
+            recebidas, o usuário poderá também colaborar com o meio ambiente. A
+            move on e a ONG &quot;Iniciativa Verde&quot; estão juntas no combate
+            à crise climática e na preservação dos nossos mananciais.
           </Text>
           <Box>
             <NextLink href={"/welcome"} passHref>

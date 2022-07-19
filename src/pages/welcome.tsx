@@ -86,9 +86,10 @@ export default function Welcome() {
         justifyContent={"flex-start"}
         alignItems={"center"}
         position={"relative"}
-        transform={"translateY(-20px)"}
+        py={5}
+        // transform={"translateY(-20px)"}
       >
-        <Flex
+        {/* <Flex
           className="logo"
           flexDirection={"column"}
           w={100}
@@ -107,7 +108,7 @@ export default function Welcome() {
               height={78}
             />
           </Box>
-        </Flex>
+        </Flex> */}
 
         <Flex
           className="content"
@@ -117,7 +118,7 @@ export default function Welcome() {
           bg={"linear-gradient(rgba(24,27,35, .8), rgba(24,27,35, .5))"}
           borderRadius={10}
           alignItems={"center"}
-          padding={["70px 20px 50px 20px", "70px 50px 30px 50px"]}
+          padding={["10px 20px 20px 20px", "20px 50px 30px 50px"]}
         >
           <InitialFormSteps step={step} />
 

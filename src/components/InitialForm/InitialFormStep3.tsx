@@ -1,26 +1,7 @@
-import {
-  Box,
-  Button,
-  Input as ChakraInput,
-  Checkbox,
-  Flex,
-  FormLabel,
-  HStack,
-  Icon,
-  InputGroup,
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Input as ChakraInput, Checkbox, Flex, FormLabel, HStack, Icon, InputGroup, SimpleGrid, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { Image as ChakraImage } from "@chakra-ui/react";
 import { FiFile } from "react-icons/fi";
-import {
-  RiArrowRightLine,
-  RiCheckLine,
-  RiUserAddLine,
-  RiUserFollowLine,
-} from "react-icons/ri";
+import { RiArrowRightLine, RiCheckLine, RiUserAddLine, RiUserFollowLine } from "react-icons/ri";
 
 import { Input } from "../Form/Input";
 
@@ -57,7 +38,7 @@ export function InitialFormStep3({
           <Text
             as="h2"
             fontWeight={"bold"}
-            mt={"5"}
+            mt={"3"}
             fontSize={"xl"}
             textAlign={"center"}
           >

@@ -7,7 +7,7 @@ export function GlobalModal({ onClose, isOpen }) {
   const { modalComponent } = useModal();
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen} isCentered size={"xl"}>
+    <Modal onClose={onClose} isOpen={isOpen} size={"xl"}>
       <ModalOverlay bgColor={"rgba(6, 6, 7, .96)"} />
       <ModalContent
         borderRadius={10}

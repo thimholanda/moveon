@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, HStack, Icon, IconButton, Modal, ModalContent, ModalOverlay, SimpleGrid, Text, useBreakpointValue, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Icon, IconButton, Image, Modal, ModalContent, ModalOverlay, SimpleGrid, Text, useBreakpointValue, useDisclosure } from "@chakra-ui/react";
 import Vimeo from "@u-wave/react-vimeo";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -95,9 +95,9 @@ export default function Workout() {
       <Modal
         onClose={onClose}
         isOpen={isOpen}
-        isCentered
+        // isCentered
         size={"xl"}
-        scrollBehavior="inside"
+        // scrollBehavior="inside"
       >
         <ModalOverlay bgColor={"rgba(6, 6, 7, .96)"} />
         <ModalContent
@@ -124,25 +124,37 @@ export default function Workout() {
             </Text>
             <SimpleGrid columns={[1, 2]} spacing={10} mb={7}>
               <Flex alignItems={"center"} justifyContent={"center"}>
-                <Icon
+                {/* <Icon
                   fontSize={"5xl"}
                   color={"gray.100"}
                   as={FiBarChart}
                   mr={2}
-                ></Icon>
-                <Text fontSize={"3xl"} color={"gray.100"}>
+                ></Icon> */}
+                <Image
+                  maxW={200}
+                  w={"100%"}
+                  alt="movecoins"
+                  src="/movecoins.png"
+                ></Image>
+                {/* <Text fontSize={"3xl"} color={"gray.100"}>
                   + 50 <strong>XP</strong>
-                </Text>
+                </Text> */}
               </Flex>
               <Flex alignItems={"center"} justifyContent={"center"} mx={2}>
-                <Icon
+                {/* <Icon
                   fontSize={"5xl"}
                   color={"gray.100"}
                   as={RiCoinsLine}
                 ></Icon>
                 <Text fontSize={"3xl"} color={"gray.100"}>
                   + 100
-                </Text>
+                </Text> */}
+                <Image
+                  maxW={200}
+                  w={"100%"}
+                  alt="movecoins"
+                  src="/xp.png"
+                ></Image>
               </Flex>
             </SimpleGrid>
           </Flex>
