@@ -1,27 +1,7 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  Link,
-  SimpleGrid,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack, Icon, Link, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue } from "@chakra-ui/react";
+import Image from "next/image";
 import NextLink from "next/link";
-import {
-  RiCoinsLine,
-  RiFireLine,
-  RiPlayCircleLine,
-  RiTimeLine,
-} from "react-icons/ri";
+import { RiCoinsLine, RiFireLine, RiInstagramLine, RiLinkedinLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -33,7 +13,7 @@ export default function Ranking() {
     lg: true,
   });
 
-  const { name, money } = useUserData();
+  const { name, money, instagram, linkedIn } = useUserData();
 
   return (
     <Flex direction="column" h="100vh">
@@ -52,25 +32,45 @@ export default function Ranking() {
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th>Posição</Th>
+                    <Th></Th>
                     <Th>Usuário</Th>
-                    <Th>Move Coins</Th>
+                    <Th>Movecoins</Th>
                     {/* <Th width='8'></Th> */}
                   </Tr>
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td>1º lugar</Td>
+                    <Td>1º</Td>
                     <Td>
                       <Box>
-                        <Link color="pink.400" onMouseEnter={() => {}}>
-                          <Text fontWeight="bold">{name}</Text>
-                        </Link>
+                        <Text color="pink.400" fontWeight="bold">
+                          {name}
+                        </Text>
+
+                        {!!instagram && (
+                          <Flex alignItems={"center"}>
+                            <Icon me={1} as={RiInstagramLine}></Icon>
+                            <Text>@{`${instagram}`}</Text>
+                          </Flex>
+                        )}
+
+                        {!!linkedIn && (
+                          <Flex alignItems={"center"}>
+                            <Icon me={1} as={RiLinkedinLine}></Icon>
+                            <Text>@{`${linkedIn}`}</Text>
+                          </Flex>
+                        )}
                       </Box>
                     </Td>
                     <Td>
                       <Text color="gray.300">
-                        <Icon as={RiCoinsLine} />
+                        {/* <Icon as={RiCoinsLine} /> */}
+                        <Image
+                          width={"40"}
+                          height={"37"}
+                          src={"/icon-movecoins.png"}
+                          alt={"Movecoins"}
+                        ></Image>
                         {money}
                       </Text>
                     </Td>

@@ -1,19 +1,6 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Icon,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { FiBarChart } from "react-icons/fi";
-import {
-  RiArrowRightLine,
-  RiCheckboxCircleLine,
-  RiCoinsLine,
-} from "react-icons/ri";
+import { RiArrowRightLine, RiCheckboxCircleLine, RiCoinsLine } from "react-icons/ri";
 
 import { useModal } from "../../hooks/useModal";
 
@@ -22,7 +9,7 @@ export function LevelUpModal({ level }) {
 
   return (
     <>
-      <Flex
+      {/* <Flex
         className="logo"
         flexDirection={"column"}
         w={100}
@@ -44,9 +31,9 @@ export function LevelUpModal({ level }) {
             height={78}
           />
         </Box>
-      </Flex>
+      </Flex> */}
 
-      <Flex p={5} pt={20} direction={"column"} alignItems={"center"}>
+      <Flex p={5} direction={"column"} alignItems={"center"}>
         <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
           <strong>Parabéns!</strong> Você subiu de level.
         </Text>

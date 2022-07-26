@@ -1,20 +1,7 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Icon,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { FiBarChart } from "react-icons/fi";
-import {
-  RiArrowRightLine,
-  RiCheckboxCircleLine,
-  RiCoinsLine,
-} from "react-icons/ri";
+import { RiArrowRightLine, RiCheckboxCircleLine, RiCoinsLine } from "react-icons/ri";
 
 import { useModal } from "../../hooks/useModal";
 
@@ -23,7 +10,7 @@ export function AwardModal() {
 
   return (
     <>
-      <Flex
+      {/* <Flex
         className="logo"
         flexDirection={"column"}
         w={100}
@@ -45,9 +32,19 @@ export function AwardModal() {
             height={78}
           />
         </Box>
+      </Flex> */}
+
+      <Flex p={5} direction={"column"} alignItems={"center"}>
+        <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
+          Você e sua empresa plantaram 1 árvore!
+        </Text>
+        <Text mb={6} fontSize={"lg"} color={"gray.200"} textAlign={"center"}>
+          {`Continue assim, o meio ambiente agradece.`}
+        </Text>
+        <Image mb={"5"} w={"200px"} src={"/tree.png"} alt={"Prêmio"}></Image>
       </Flex>
 
-      <Flex p={5} pt={20} direction={"column"} alignItems={"center"}>
+      {/* <Flex p={5} direction={"column"} alignItems={"center"}>
         <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
           <strong>Parabéns!</strong> Você conquistou o prêmio!
         </Text>
@@ -55,7 +52,7 @@ export function AwardModal() {
           {`Acesse o menu "meus prêmios" para resgatá-lo.`}
         </Text>
         <Image mb={"5"} w={"200px"} src={"/premio.png"} alt={"Prêmio"}></Image>
-      </Flex>
+      </Flex> */}
       <Flex
         borderTop={"1px solid white"}
         borderColor={"gray.400"}

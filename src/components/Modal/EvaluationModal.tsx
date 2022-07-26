@@ -1,7 +1,9 @@
 import { Box, Button, Flex, Icon, Image, Modal, ModalContent, ModalOverlay, SimpleGrid, Text, useBreakpointValue, useDisclosure } from "@chakra-ui/react";
 import Vimeo from "@u-wave/react-vimeo";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { RiArrowRightLine, RiCheckLine, RiQuestionFill } from "react-icons/ri";
+import * as yup from "yup";
 
 import { Evaluation, useEvaluations } from "../../hooks/useEvaluations";
 import { useHistory, UserHistory } from "../../hooks/useHistory";
@@ -13,6 +15,7 @@ export function EvaluationModal() {
     base: false,
     md: true,
   });
+
   const { onClose } = useModal();
   const { setEvaluation } = useEvaluations();
   const { addToHistory, userHistories } = useHistory();
@@ -30,6 +33,8 @@ export function EvaluationModal() {
   const [weight, setWeight] = useState("");
 
   function handleClose() {
+    if (!squats || !abs || !weight) return;
+
     const evaluation: Evaluation = {
       squats,
       abs,
@@ -77,13 +82,22 @@ export function EvaluationModal() {
       <Flex p={5} direction={"column"} alignItems={"center"}>
         <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
           É a hora de registrar sua evolução!
-          <Icon
-            fontSize={"2xl"}
-            cursor={"pointer"}
+          <Button
+            border={"1px"}
+            mb={5}
+            mt={1}
+            bg={"transparent"}
             onClick={onOpen}
-            as={RiQuestionFill}
-            ms={2}
-          ></Icon>
+            _hover={{ color: "white" }}
+          >
+            Clique aqui e veja como executar{" "}
+            <Icon
+              fontSize={"2xl"}
+              cursor={"pointer"}
+              as={RiQuestionFill}
+              ms={2}
+            ></Icon>
+          </Button>
         </Text>
         <Text mb={6} fontSize={"lg"} color={"gray.200"} textAlign={"center"}>
           Marque o número máximo de repetições que conseguir fazer em 1 minuto
@@ -93,17 +107,19 @@ export function EvaluationModal() {
           <SimpleGrid columns={isWideVersion ? 3 : 1} spacing={4} mb={6}>
             <Input
               isTransparent
-              name="height"
+              name="squats"
               type="text"
               label="Agachamentos"
               onChange={(e) => setSquats(e.target.value)}
+              isRequired
             />
             <Input
               isTransparent
-              name="weight"
+              name="abs"
               type="text"
               label="Abdominais"
               onChange={(e) => setAbs(e.target.value)}
+              isRequired
             />
             {/* <Input
               isTransparent
@@ -112,14 +128,15 @@ export function EvaluationModal() {
               label="Flexões"
               onChange={(e) => setPushUps(e.target.value)}
             /> */}
+            <Input
+              isTransparent
+              name="weight"
+              type="text"
+              label="Peso atual"
+              onChange={(e) => setWeight(e.target.value)}
+              isRequired
+            />
           </SimpleGrid>
-          <Input
-            isTransparent
-            name="weight"
-            type="text"
-            label="Qual é o seu peso atual?"
-            onChange={(e) => setWeight(e.target.value)}
-          />
         </Flex>
       </Flex>
       <Flex py={10} pt={4} alignItems={"center"} justifyContent={"center"}>
@@ -139,7 +156,6 @@ export function EvaluationModal() {
       <Modal
         onClose={onCloseLocal}
         isOpen={isOpen}
-        isCentered
         size={"xl"}
         scrollBehavior="inside"
       >

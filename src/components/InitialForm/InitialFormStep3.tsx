@@ -3,6 +3,7 @@ import { Image as ChakraImage } from "@chakra-ui/react";
 import { FiFile } from "react-icons/fi";
 import { RiArrowRightLine, RiCheckLine, RiUserAddLine, RiUserFollowLine } from "react-icons/ri";
 
+import { useUserData } from "../../hooks/useUserData";
 import { Input } from "../Form/Input";
 
 interface InitialFormStepProps {
@@ -20,12 +21,31 @@ export function InitialFormStep3({
     base: false,
     md: true,
   });
+
+  const { setInstagram, setLinkedIn } = useUserData();
+
   return (
     <VStack width="100%" spacing={8}>
       <Flex as="form" width="100%" borderRadius={8} flexDir="column">
         <SimpleGrid columns={isWideVersion ? 2 : 1} spacing={4} mb={6}>
-          <Input isTransparent name="instagram" type="text" label="Instagram" />
-          <Input isTransparent name="linkedin" type="text" label="LinkedIn" />
+          <Input
+            isTransparent
+            name="instagram"
+            type="text"
+            label="Instagram"
+            onChange={(e) => {
+              setInstagram(e.target.value);
+            }}
+          />
+          <Input
+            isTransparent
+            name="linkedin"
+            type="text"
+            label="LinkedIn"
+            onChange={(e) => {
+              setLinkedIn(e.target.value);
+            }}
+          />
         </SimpleGrid>
         <VStack spacing={4} alignItems={"flex-start"} mb={"6"}>
           <Checkbox alignItems={"flex-start"} defaultChecked>

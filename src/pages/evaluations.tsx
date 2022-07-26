@@ -79,16 +79,7 @@ export default function Article() {
                         </Text>
                         <Text color="gray.400">Abdominais</Text>
                       </Flex>
-                      <Flex w={"100%"} direction="column">
-                        <Text
-                          color="gray.100"
-                          fontWeight={"bold"}
-                          fontSize={"2xl"}
-                        >
-                          {evaluation.pushUps}
-                        </Text>
-                        <Text color="gray.400">Flexões</Text>
-                      </Flex>
+
                       <Flex w={"100%"} direction="column">
                         <Text
                           color="gray.100"

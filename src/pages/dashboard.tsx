@@ -1,31 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  Image,
-  Img,
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Icon, Image, Img, SimpleGrid, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { default as Link, default as NextLink } from "next/link";
 import { useEffect } from "react";
-import {
-  RiBarChartBoxLine,
-  RiCheckboxCircleLine,
-  RiFileList3Line,
-  RiFireLine,
-  RiGift2Line,
-  RiHandHeartLine,
-  RiLiveLine,
-  RiPlayCircleLine,
-  RiTimeLine,
-} from "react-icons/ri";
+import { RiBarChartBoxLine, RiCheckboxCircleLine, RiFileList3Line, RiFireLine, RiGift2Line, RiHandHeartLine, RiLiveLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { AwardModal } from "../components/Modal/AwardModal";
@@ -69,7 +46,7 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    if (level === 3) {
+    if (level === 3 && trees === 0) {
       defineModalComponent(<AwardModal />);
       setHasAward(true);
       createNotification("Parabéns! Você conquistou o prêmio.");

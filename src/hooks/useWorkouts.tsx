@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 
 export interface Workout {
   id: number;

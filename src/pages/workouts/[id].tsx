@@ -56,7 +56,7 @@ export default function Workout() {
     workout.isCompleted = true;
     onOpen();
     addExperiencePoints(50);
-    addMoney(100);
+    addMoney(1);
     createNotification(`Você concluiu a aula: ${workout.title}`);
     setWorkouts(updatedWorkouts);
     const history: UserHistory = {

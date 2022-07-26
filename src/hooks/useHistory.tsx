@@ -21,9 +21,12 @@ export function UseHistoryProvider({ children }: UseHistoryProviderProps) {
 
   function addToHistory(userHistory: UserHistory) {
     const today = new Date();
-    const date = `${today.getDate()}/${
+    const date = `${String(today.getDate()).padStart(2, "0")}/${String(
       today.getMonth() + 1
-    }/${today.getFullYear()} | ${today.getHours()}h${today.getMinutes()}`;
+    ).padStart(
+      2,
+      "0"
+    )}/${today.getFullYear()} | ${today.getHours()}h${today.getMinutes()}`;
     userHistory.date = date;
     setUserHistories([...userHistories, userHistory]);
   }

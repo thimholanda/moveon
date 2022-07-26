@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 import { NumberLocale } from "yup/lib/locale";
 
 import { LevelUpModal } from "../components/Modal/LevelUpModal";
@@ -30,6 +23,10 @@ interface UserDataContextData {
   setVisitedBlog: React.Dispatch<SetStateAction<boolean>>;
   hasAward: boolean;
   setHasAward: React.Dispatch<SetStateAction<boolean>>;
+  instagram: string;
+  linkedIn: string;
+  setInstagram: React.Dispatch<SetStateAction<string>>;
+  setLinkedIn: React.Dispatch<SetStateAction<string>>;
 }
 
 interface UserDataProviderProps {
@@ -43,6 +40,8 @@ const UserDataContext = createContext<UserDataContextData>(
 export function UserDataProvider({ children }: UserDataProviderProps) {
   const [fileDataURL, setFileDataURL] = useState<string | null>(null);
   const [name, setName] = useState<string | null>(null);
+  const [instagram, setInstagram] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
   const [money, setMoney] = useState(0);
   const [experiencePoints, setExperiencePoints] = useState(0);
   const [level, setLevel] = useState(1);
@@ -107,6 +106,10 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
         setVisitedBlog,
         hasAward,
         setHasAward,
+        instagram,
+        setInstagram,
+        linkedIn,
+        setLinkedIn,
       }}
     >
       {children}

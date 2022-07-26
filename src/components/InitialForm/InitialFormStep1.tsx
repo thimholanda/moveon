@@ -3,6 +3,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 
 import { useUserData } from "../../hooks/useUserData";
 import { Input } from "../Form/Input";
+import { Option } from "../Form/Option";
 import { Select } from "../Form/Select";
 
 interface InitialFormStepProps {
@@ -23,51 +24,51 @@ export function InitialFormStep1({ handleNextStep }: InitialFormStepProps) {
             onBlur={(e) => setName(e.target.value)}
           />
           <Select name="interests" label="O que você mais gosta de fazer?">
-            <option value="">Selecione...</option>
-            <option value="1">Tocar instrumentos musicais</option>
-            <option value="2">Praticar esportes</option>
-            <option value="3">Ler</option>
-            <option value="4">Assistir filmes</option>
-            <option value="5">Frequentar aulas de teatro</option>
-            <option value="6">Pintar</option>
-            <option value="7">Cozinhar</option>
-            <option value="8">Dançar</option>
-            <option value="9">Viajar</option>
-            <option value="10">Escrever</option>
-            <option value="11">Meditar</option>
-            <option value="12">Visitar museus</option>
-            <option value="13">Fotografar</option>
-            <option value="14">Velejar</option>
-            <option value="15">Pescar</option>
-            <option value="16">Tocar DJ</option>
-            <option value="17">Ir a restaurantes</option>
-            <option value="18">Passear no shopping</option>
-            <option value="19">Estudar</option>
+            <Option value="">Selecione...</Option>
+            <Option value="4">Assistir filmes</Option>
+            <Option value="7">Cozinhar</Option>
+            <Option value="8">Dançar</Option>
+            <Option value="10">Escrever</Option>
+            <Option value="19">Estudar</Option>
+            <Option value="13">Fotografar</Option>
+            <Option value="5">Frequentar aulas de teatro</Option>
+            <Option value="17">Ir a restaurantes</Option>
+            <Option value="3">Ler</Option>
+            <Option value="11">Meditar</Option>
+            <Option value="18">Passear no shopping</Option>
+            <Option value="15">Pescar</Option>
+            <Option value="6">Pintar</Option>
+            <Option value="2">Praticar esportes</Option>
+            <Option value="16">Tocar DJ</Option>
+            <Option value="1">Tocar instrumentos musicais</Option>
+            <Option value="14">Velejar</Option>
+            <Option value="9">Viajar</Option>
+            <Option value="12">Visitar museus</Option>
           </Select>
           <Select
             name="sports-activity"
             label="Você já praticou ou pratica algum esporte?"
           >
-            <option value="">Selecione...</option>
-            <option value="1">Nunca pratiquei</option>
-            <option value="2">Pratique, mas estou parado</option>
-            <option value="3">Pratico esportes com frequencia</option>
+            <Option value="">Selecione...</Option>
+            <Option value="1">Nunca pratiquei</Option>
+            <Option value="2">Pratiquei, mas estou parado</Option>
+            <Option value="3">Pratico esportes com frequência</Option>
           </Select>
           <Select name="favorite-sport" label="Qual é o seu esporte favorito?">
-            <option>Selecione...</option>
-            <option value="1">Tênis</option>
-            <option value="2">Basquete</option>
-            <option value="3">Corrida</option>
-            <option value="4">Futebol</option>
-            <option value="5">Ginástica</option>
-            <option value="6">Natação</option>
-            <option value="7">Skate</option>
-            <option value="8">Surfe</option>
-            <option value="9">Vôlei</option>
-            <option value="10">Luta</option>
-            <option value="11">Musculação </option>
-            <option value="12">Triathlon</option>
-            <option value="13">Outros</option>
+            <Option value="">Selecione...</Option>
+            <Option value="2">Basquete</Option>
+            <Option value="3">Corrida</Option>
+            <Option value="4">Futebol</Option>
+            <Option value="5">Ginástica</Option>
+            <Option value="10">Luta</Option>
+            <Option value="11">Musculação </Option>
+            <Option value="6">Natação</Option>
+            <Option value="7">Skate</Option>
+            <Option value="8">Surfe</Option>
+            <Option value="1">Tênis</Option>
+            <Option value="12">Triathlon</Option>
+            <Option value="9">Vôlei</Option>
+            <Option value="13">Outros</Option>
           </Select>
 
           {/* <Input

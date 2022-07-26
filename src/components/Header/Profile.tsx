@@ -1,4 +1,5 @@
 import { Avatar, Box, Flex, Icon, Text } from "@chakra-ui/react";
+import Image from "next/image";
 import { RiCoinsLine } from "react-icons/ri";
 
 import { useUserData } from "../../hooks/useUserData";
@@ -14,14 +15,19 @@ export default function Profile({ showProfileData = true }: ProfileProps) {
     <Flex align="center">
       {showProfileData && (
         <Box mr="4" textAlign="right">
-          <Text>{name}</Text>
-          <Text color="gray.300">
-            <Icon as={RiCoinsLine} />
+          <Text color="white">
+            <Image
+              width={"40"}
+              height={"37"}
+              src={"/icon-movecoins.png"}
+              alt={"Movecoins"}
+            ></Image>
+            {/* <Icon color={"white"} as={RiCoinsLine} /> */}
             {money}
           </Text>
         </Box>
       )}
-
+      <Text mx={2}>{name}</Text>
       <Avatar src={fileDataURL} size="md" name={name} />
     </Flex>
   );

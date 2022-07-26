@@ -2,6 +2,7 @@ import { Box, Button, Flex, HStack, Icon, SimpleGrid, Stack, useBreakpointValue,
 import { RiArrowRightLine } from "react-icons/ri";
 
 import { Input } from "../Form/Input";
+import { Option } from "../Form/Option";
 import { Select } from "../Form/Select";
 
 interface InitialFormStepProps {
@@ -20,21 +21,21 @@ export function InitialFormStep2({ handleNextStep }: InitialFormStepProps) {
           <Input isTransparent name="height" type="text" label="Altura" />
           <Input isTransparent name="weight" type="text" label="Peso" />
           <Select name="genre" label="Gênero">
-            <option>Selecione...</option>
-            <option value="1">Masculino</option>
-            <option value="2">Feminino</option>
-            <option value="3">Outros</option>
-            <option value="4">Prefiro não dizer</option>
+            <Option value="">Selecione...</Option>
+            <Option value="2">Feminino</Option>
+            <Option value="1">Masculino</Option>
+            <Option value="3">Outros</Option>
+            <Option value="4">Prefiro não dizer</Option>
           </Select>
           <Input isTransparent name="birthday" type="text" label="Nascimento" />
         </SimpleGrid>
         <Stack spacing={4}>
           <Select name="goal" label="Qual é o seu principal objetivo?">
-            <option>Selecione...</option>
-            <option value="1">Emagrecimento</option>
-            <option value="2">Ganho de massa muscular</option>
-            <option value="3">Melhora da saúde mental</option>
-            <option value="4">Qualidade de vida</option>
+            <Option value="">Selecione...</Option>
+            <Option value="1">Emagrecimento</Option>
+            <Option value="2">Ganho de massa muscular</Option>
+            <Option value="3">Melhora da saúde mental</Option>
+            <Option value="4">Qualidade de vida</Option>
           </Select>
         </Stack>
 
