@@ -1,22 +1,7 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  Image,
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack, Icon, Image, SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { ChangeEvent, useEffect, useState } from "react";
-import {
-  RiCheckboxCircleLine,
-  RiFireLine,
-  RiPlayCircleLine,
-  RiTimeLine,
-} from "react-icons/ri";
+import { RiCheckboxCircleLine, RiFireLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Select } from "../../components/Form/Select";
 import { Header } from "../../components/Header";
@@ -44,6 +29,8 @@ export default function Workouts() {
   allCategories.map((category) => {
     if (!categories.includes(category)) categories.push(category);
   });
+
+  categories.sort();
 
   function handleFilterWorkouts(event: ChangeEvent<HTMLSelectElement>) {
     setFilter(event.currentTarget.value);
