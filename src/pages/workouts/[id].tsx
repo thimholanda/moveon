@@ -68,7 +68,7 @@ export default function Workout() {
   }, [updatedWorkouts]);
 
   useEffect(() => {
-    if (videoProgress.length > 100 && !workout.isCompleted) {
+    if (videoProgress.length > 5 && !workout.isCompleted) {
       setCompletedWorkout();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
