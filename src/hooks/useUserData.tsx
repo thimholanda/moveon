@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 import { NumberLocale } from "yup/lib/locale";
 
 import { LevelUpModal } from "../components/Modal/LevelUpModal";

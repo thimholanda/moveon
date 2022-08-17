@@ -1,35 +1,11 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  IconButton,
-  Image,
-  Modal,
-  ModalContent,
-  ModalOverlay,
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Icon, IconButton, Image, Modal, ModalContent, ModalOverlay, SimpleGrid, Text, useBreakpointValue, useDisclosure } from "@chakra-ui/react";
 import Vimeo from "@u-wave/react-vimeo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BiMeh, BiSad, BiSmile } from "react-icons/bi";
 import { FiBarChart } from "react-icons/fi";
-import {
-  RiArrowRightLine,
-  RiArrowRightSLine,
-  RiCheckboxCircleLine,
-  RiCloseLine,
-  RiCoinsLine,
-  RiFireLine,
-  RiTimeLine,
-} from "react-icons/ri";
+import { RiArrowRightLine, RiArrowRightSLine, RiCheckboxCircleLine, RiCloseLine, RiCoinsLine, RiFireLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";

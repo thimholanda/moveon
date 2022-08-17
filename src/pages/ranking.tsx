@@ -1,31 +1,7 @@
-import {
-  Avatar,
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  Link,
-  SimpleGrid,
-  Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Avatar, Box, Flex, Heading, HStack, Icon, Link, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue } from "@chakra-ui/react";
 import Image from "next/image";
 import NextLink from "next/link";
-import {
-  RiCoinsLine,
-  RiFireLine,
-  RiInstagramLine,
-  RiLinkedinLine,
-  RiPlayCircleLine,
-  RiTimeLine,
-} from "react-icons/ri";
+import { RiCoinsLine, RiFireLine, RiInstagramLine, RiLinkedinLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";

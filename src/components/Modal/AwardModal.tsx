@@ -1,20 +1,7 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Icon,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { FiBarChart } from "react-icons/fi";
-import {
-  RiArrowRightLine,
-  RiCheckboxCircleLine,
-  RiCoinsLine,
-} from "react-icons/ri";
+import { RiArrowRightLine, RiCheckboxCircleLine, RiCoinsLine } from "react-icons/ri";
 
 import { useModal } from "../../hooks/useModal";
 
