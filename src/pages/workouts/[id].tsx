@@ -1,11 +1,35 @@
-import { Box, Button, Flex, Heading, HStack, Icon, IconButton, Image, Modal, ModalContent, ModalOverlay, SimpleGrid, Text, useBreakpointValue, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  SimpleGrid,
+  Text,
+  useBreakpointValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Vimeo from "@u-wave/react-vimeo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BiMeh, BiSad, BiSmile } from "react-icons/bi";
 import { FiBarChart } from "react-icons/fi";
-import { RiArrowRightLine, RiArrowRightSLine, RiCheckboxCircleLine, RiCloseLine, RiCoinsLine, RiFireLine, RiTimeLine } from "react-icons/ri";
+import {
+  RiArrowRightLine,
+  RiArrowRightSLine,
+  RiCheckboxCircleLine,
+  RiCloseLine,
+  RiCoinsLine,
+  RiFireLine,
+  RiTimeLine,
+} from "react-icons/ri";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
@@ -56,7 +80,7 @@ export default function Workout() {
     workout.isCompleted = true;
     onOpen();
     addExperiencePoints(50);
-    addMoney(1);
+    addMoney(10);
     createNotification(`Você concluiu a aula: ${workout.title}`);
     setWorkouts(updatedWorkouts);
     const history: UserHistory = {
@@ -68,7 +92,7 @@ export default function Workout() {
   }, [updatedWorkouts]);
 
   useEffect(() => {
-    if (videoProgress.length > 5 && !workout.isCompleted) {
+    if (videoProgress.length > 1 && !workout.isCompleted) {
       setCompletedWorkout();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -132,6 +156,7 @@ export default function Workout() {
                 ></Icon> */}
                 <Image
                   maxW={200}
+                  minW={175}
                   w={"100%"}
                   alt="movecoins"
                   src="/movecoins.png"
@@ -151,6 +176,7 @@ export default function Workout() {
                 </Text> */}
                 <Image
                   maxW={200}
+                  minW={175}
                   w={"100%"}
                   alt="movecoins"
                   src="/xp.png"

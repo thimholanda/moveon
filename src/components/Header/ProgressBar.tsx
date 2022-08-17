@@ -1,10 +1,19 @@
 import { Box, Flex, Icon, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 import { useUserData } from "../../hooks/useUserData";
 
 export function ProgressBar() {
   const { levelPoints, level, experiencePoints } = useUserData();
+  const [levelPercent, setLevelPercent] = useState(0);
+  const totalLevelPoints = 250;
+
+  useEffect(() => {
+    const newLevelpercent = (levelPoints / totalLevelPoints) * 100;
+    setLevelPercent(Number(newLevelpercent));
+    console.log({ levelPercent });
+  }, [levelPoints, levelPercent]);
 
   return (
     <Flex flex="1" height="6" maxWidth="200" ml="6" position="relative">
@@ -17,7 +26,7 @@ export function ProgressBar() {
         borderRadius="full"
         overflow="hidden"
       >
-        <Box width={`${levelPoints}%`} height="100%" bg="blue.400"></Box>
+        <Box width={`${levelPercent}%`} height="100%" bg="blue.400"></Box>
       </Flex>
 
       <Flex
@@ -48,7 +57,7 @@ export function ProgressBar() {
           left="0"
           bottom="-12px"
         >
-          {levelPoints}%
+          {levelPercent}%
         </Text>
       </Box>
 

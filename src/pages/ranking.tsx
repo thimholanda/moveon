@@ -1,7 +1,31 @@
-import { Box, Flex, Heading, HStack, Icon, Link, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Link,
+  SimpleGrid,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import NextLink from "next/link";
-import { RiCoinsLine, RiFireLine, RiInstagramLine, RiLinkedinLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
+import {
+  RiCoinsLine,
+  RiFireLine,
+  RiInstagramLine,
+  RiLinkedinLine,
+  RiPlayCircleLine,
+  RiTimeLine,
+} from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -13,7 +37,7 @@ export default function Ranking() {
     lg: true,
   });
 
-  const { name, money, instagram, linkedIn } = useUserData();
+  const { name, money, instagram, linkedIn, fileDataURL } = useUserData();
 
   return (
     <Flex direction="column" h="100vh">
@@ -42,25 +66,28 @@ export default function Ranking() {
                   <Tr>
                     <Td>1º</Td>
                     <Td>
-                      <Box>
-                        <Text color="pink.400" fontWeight="bold">
-                          {name}
-                        </Text>
+                      <HStack>
+                        <Avatar src={fileDataURL} size="md" name={name} />
+                        <Box>
+                          <Text color="pink.400" fontWeight="bold">
+                            {name}
+                          </Text>
 
-                        {!!instagram && (
-                          <Flex alignItems={"center"}>
-                            <Icon me={1} as={RiInstagramLine}></Icon>
-                            <Text>@{`${instagram}`}</Text>
-                          </Flex>
-                        )}
+                          {!!instagram && (
+                            <Flex alignItems={"center"}>
+                              <Icon me={1} as={RiInstagramLine}></Icon>
+                              <Text>@{`${instagram}`}</Text>
+                            </Flex>
+                          )}
 
-                        {!!linkedIn && (
-                          <Flex alignItems={"center"}>
-                            <Icon me={1} as={RiLinkedinLine}></Icon>
-                            <Text>@{`${linkedIn}`}</Text>
-                          </Flex>
-                        )}
-                      </Box>
+                          {!!linkedIn && (
+                            <Flex alignItems={"center"}>
+                              <Icon me={1} as={RiLinkedinLine}></Icon>
+                              <Text>@{`${linkedIn}`}</Text>
+                            </Flex>
+                          )}
+                        </Box>
+                      </HStack>
                     </Td>
                     <Td>
                       <Text color="gray.300">

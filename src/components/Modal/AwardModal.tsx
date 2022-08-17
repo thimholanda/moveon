@@ -1,7 +1,20 @@
-import { Box, Button, Flex, Heading, Icon, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { FiBarChart } from "react-icons/fi";
-import { RiArrowRightLine, RiCheckboxCircleLine, RiCoinsLine } from "react-icons/ri";
+import {
+  RiArrowRightLine,
+  RiCheckboxCircleLine,
+  RiCoinsLine,
+} from "react-icons/ri";
 
 import { useModal } from "../../hooks/useModal";
 
@@ -36,10 +49,11 @@ export function AwardModal() {
 
       <Flex p={5} direction={"column"} alignItems={"center"}>
         <Text color={"blue.500"} fontSize={"2xl"} textAlign={"center"}>
-          Você e sua empresa plantaram 1 árvore!
+          Parabéns!
         </Text>
         <Text mb={6} fontSize={"lg"} color={"gray.200"} textAlign={"center"}>
-          {`Continue assim, o meio ambiente agradece.`}
+          {`Além de cuidar da saúde, você contribuiu com o meio
+          ambiente.`}
         </Text>
         <Image mb={"5"} w={"200px"} src={"/tree.png"} alt={"Prêmio"}></Image>
       </Flex>

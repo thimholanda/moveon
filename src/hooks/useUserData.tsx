@@ -1,4 +1,11 @@
-import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { NumberLocale } from "yup/lib/locale";
 
 import { LevelUpModal } from "../components/Modal/LevelUpModal";
@@ -79,7 +86,7 @@ export function UserDataProvider({ children }: UserDataProviderProps) {
 
     let newLevelPoints = levelPoints + value;
 
-    if (newLevelPoints >= 100) {
+    if (newLevelPoints >= 250) {
       setLevel(level + 1);
       setLevelPoints(0);
     } else {
