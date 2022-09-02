@@ -105,6 +105,7 @@ export default function Workout() {
 
   useEffect(() => {
     if (videoProgress.length > 100) {
+      //
       setIsPaused(true);
       setCompletedWorkout();
     }
