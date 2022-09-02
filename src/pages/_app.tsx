@@ -1,17 +1,4 @@
-import {
-  Box,
-  Button,
-  ChakraProvider,
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, ChakraProvider, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import { useEffect } from "react";
 
@@ -20,10 +7,7 @@ import { SidebarDrawerProvider } from "../contexts/SidebarDrawerContext";
 import { UseEvaluationsProvider } from "../hooks/useEvaluations";
 import { UseHistoryProvider } from "../hooks/useHistory";
 import { useModal, UseModalProvider } from "../hooks/useModal";
-import {
-  NotificationsProvider,
-  useNotifications,
-} from "../hooks/useNotifications";
+import { NotificationsProvider, useNotifications } from "../hooks/useNotifications";
 import { UserDataProvider } from "../hooks/useUserData";
 import { WorkoutsProvider } from "../hooks/useWorkouts";
 import { theme } from "../styles/theme";
