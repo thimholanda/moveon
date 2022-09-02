@@ -205,7 +205,7 @@ export default function Dashboard() {
                             as={RiEyeLine}
                           />
                           <Text as="small" fontWeight="bold" color="blue.400">
-                            {workout.watchedTimes}
+                            {workout && workout.watchedTimes}
                           </Text>
                         </HStack>
                       </HStack>
