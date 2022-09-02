@@ -6,7 +6,7 @@ import { useNotifications } from "../../hooks/useNotifications";
 
 export function NotificationsNav() {
   const useOutsideClick = (callback) => {
-    const ref: any = useRef();
+    const ref: any = useRef(null);
 
     useEffect(() => {
       const handleClick = (event) => {
@@ -25,19 +25,17 @@ export function NotificationsNav() {
     return ref;
   };
 
-  const [showNotifications, setShowNotifications] = useState(false);
-
-  const { notifications, removeNotification } = useNotifications();
-
-  useEffect(() => {
-    console.log(notifications);
-  }, [notifications]);
-
   function handleClickOutside() {
     // setShowNotifications(false);
+    console.log("outsideClick");
   }
 
   const ref = useOutsideClick(handleClickOutside);
+
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const { notifications, removeNotification, removeAllNotifications } =
+    useNotifications();
 
   function handleClick() {
     console.log("click inside");
@@ -102,9 +100,29 @@ export function NotificationsNav() {
           textAlign={"left"}
           shadow={"base"}
         >
-          <Heading as={"h2"} size={"md"} mb={"1"} color={"gray.900"}>
-            Notificações
-          </Heading>
+          <HStack justifyContent={"space-between"}>
+            <Heading pl={1} as={"h2"} size={"md"} mb={"1"} color={"gray.900"}>
+              Notificações
+            </Heading>
+            {notifications.length > 0 && (
+              <Button
+                pb={2}
+                pr={1}
+                outline={"none"}
+                _hover={{ bg: "none", color: "gray.500", outline: "none" }}
+                _focus={{ bg: "none", outline: "none" }}
+                _active={{ bg: "none" }}
+                bg={"none"}
+                color={"gray.300"}
+                onClick={() => {
+                  removeAllNotifications();
+                }}
+              >
+                limpar
+              </Button>
+            )}
+          </HStack>
+
           {notifications.length > 0 &&
             notifications.map((notification) => (
               <HStack key={notification.id}>
@@ -136,6 +154,8 @@ export function NotificationsNav() {
               fontWeight={"normal"}
               color={"gray.500"}
               as={"h3"}
+              pb={2}
+              pl={1}
             >
               Você não tem nenhuma notificação.
             </Heading>

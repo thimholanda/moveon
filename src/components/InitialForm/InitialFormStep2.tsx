@@ -24,7 +24,7 @@ export function InitialFormStep2({ handleNextStep }: InitialFormStepProps) {
             <Option value="">Selecione...</Option>
             <Option value="1">Feminino</Option>
             <Option value="2">Masculino</Option>
-            <Option value="3">Não Binário</Option>
+            <Option value="3">Não binário</Option>
             <Option value="4">Prefiro não responder</Option>
           </Select>
           <Input isTransparent name="birthday" type="text" label="Nascimento" />

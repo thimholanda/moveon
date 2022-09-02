@@ -12,7 +12,6 @@ export function ProgressBar() {
   useEffect(() => {
     const newLevelpercent = (levelPoints / totalLevelPoints) * 100;
     setLevelPercent(Number(newLevelpercent));
-    console.log({ levelPercent });
   }, [levelPoints, levelPercent]);
 
   return (

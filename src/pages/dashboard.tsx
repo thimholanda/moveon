@@ -2,7 +2,7 @@
 import { Box, Button, Flex, Heading, HStack, Icon, Image, Img, SimpleGrid, Text, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { default as Link, default as NextLink } from "next/link";
 import { useEffect } from "react";
-import { RiBarChartBoxLine, RiCheckboxCircleLine, RiFileList3Line, RiFireLine, RiGift2Line, RiHandHeartLine, RiLiveLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
+import { RiBarChartBoxLine, RiCheckboxCircleLine, RiEyeLine, RiFileList3Line, RiFireLine, RiGift2Line, RiHandHeartLine, RiLiveLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../components/Header";
 import { AwardModal } from "../components/Modal/AwardModal";
@@ -172,29 +172,42 @@ export default function Dashboard() {
                       </HStack>
 
                       <HStack>
-                        <Text as="small" fontWeight="bold" color="green.400">
-                          {!!workout && workout.progress.length > 0
-                            ? `${workout.progress.length - 1}%`
-                            : "0%"}
-                        </Text>
-                        <Flex
-                          flex="1"
-                          height="1"
-                          width={["8", "20"]}
-                          bg="gray.100"
-                          borderRadius="full"
-                          overflow="hidden"
-                        >
-                          <Box
-                            width={
-                              !!workout && workout.progress.length > 0
-                                ? `${workout.progress.length - 1}%`
-                                : "0%"
-                            }
-                            height="100%"
-                            bg="green.400"
-                          ></Box>
-                        </Flex>
+                        <HStack spacing={1}>
+                          <Text as="small" fontWeight="bold" color="green.400">
+                            {!!workout && workout.progress.length > 0
+                              ? `${workout.progress.length - 1}%`
+                              : "0%"}
+                          </Text>
+                          <Flex
+                            flex="1"
+                            height="1"
+                            width={["8", "10"]}
+                            bg="gray.100"
+                            borderRadius="full"
+                            overflow="hidden"
+                          >
+                            <Box
+                              width={
+                                !!workout && workout.progress.length > 0
+                                  ? `${workout.progress.length - 1}%`
+                                  : "0%"
+                              }
+                              height="100%"
+                              bg="green.400"
+                            ></Box>
+                          </Flex>
+                        </HStack>
+
+                        <HStack spacing={1}>
+                          <Icon
+                            display={"inline-block"}
+                            color="blue.400"
+                            as={RiEyeLine}
+                          />
+                          <Text as="small" fontWeight="bold" color="blue.400">
+                            {workout.watchedTimes}
+                          </Text>
+                        </HStack>
                       </HStack>
                     </Flex>
                   </Box>

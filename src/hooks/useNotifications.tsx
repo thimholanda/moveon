@@ -13,6 +13,7 @@ interface NotificationsContextData {
   createNotification: (title: string) => void;
   removeNotification: (id: number) => void;
   notifications: Notification[];
+  removeAllNotifications: () => void;
 }
 
 const NotificationsContext = createContext<NotificationsContextData>(
@@ -41,9 +42,18 @@ export function NotificationsProvider({
     setNotifications(updatedNotifications);
   }
 
+  function removeAllNotifications() {
+    setNotifications([]);
+  }
+
   return (
     <NotificationsContext.Provider
-      value={{ createNotification, removeNotification, notifications }}
+      value={{
+        createNotification,
+        removeNotification,
+        notifications,
+        removeAllNotifications,
+      }}
     >
       {children}
     </NotificationsContext.Provider>

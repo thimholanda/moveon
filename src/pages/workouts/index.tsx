@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, HStack, Icon, Image, SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { ChangeEvent, useEffect, useState } from "react";
-import { RiCheckboxCircleLine, RiFireLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
+import { RiCheckboxCircleLine, RiEyeLine, RiFireLine, RiPlayCircleLine, RiTimeLine } from "react-icons/ri";
 
 import { Select } from "../../components/Form/Select";
 import { Header } from "../../components/Header";
@@ -136,33 +136,50 @@ export default function Workouts() {
                           </HStack>
 
                           <HStack>
-                            <Text
-                              as="small"
-                              fontWeight="bold"
-                              color="green.400"
-                            >
-                              {workout.progress.length > 0
-                                ? `${workout.progress.length - 1}%`
-                                : "0%"}
-                            </Text>
-                            <Flex
-                              flex="1"
-                              height="1"
-                              width={["8", "20"]}
-                              bg="gray.100"
-                              borderRadius="full"
-                              overflow="hidden"
-                            >
-                              <Box
-                                width={
-                                  workout.progress.length > 0
-                                    ? `${workout.progress.length - 1}%`
-                                    : "0%"
-                                }
-                                height="100%"
-                                bg="green.400"
-                              ></Box>
-                            </Flex>
+                            <HStack spacing={1}>
+                              <Text
+                                as="small"
+                                fontWeight="bold"
+                                color="green.400"
+                              >
+                                {!!workout && workout.progress.length > 0
+                                  ? `${workout.progress.length - 1}%`
+                                  : "0%"}
+                              </Text>
+                              <Flex
+                                flex="1"
+                                height="1"
+                                width={["8", "10"]}
+                                bg="gray.100"
+                                borderRadius="full"
+                                overflow="hidden"
+                              >
+                                <Box
+                                  width={
+                                    !!workout && workout.progress.length > 0
+                                      ? `${workout.progress.length - 1}%`
+                                      : "0%"
+                                  }
+                                  height="100%"
+                                  bg="green.400"
+                                ></Box>
+                              </Flex>
+                            </HStack>
+
+                            <HStack spacing={1}>
+                              <Icon
+                                display={"inline-block"}
+                                color="blue.400"
+                                as={RiEyeLine}
+                              />
+                              <Text
+                                as="small"
+                                fontWeight="bold"
+                                color="blue.400"
+                              >
+                                {workout.watchedTimes}
+                              </Text>
+                            </HStack>
                           </HStack>
                         </Flex>
                       </Box>

@@ -2,14 +2,16 @@ import { Box, Button, Flex, Heading, HStack, Icon, IconButton, Image, Modal, Mod
 import Vimeo from "@u-wave/react-vimeo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BiMeh, BiSad, BiSmile } from "react-icons/bi";
 import { FiBarChart } from "react-icons/fi";
-import { RiArrowRightLine, RiArrowRightSLine, RiCheckboxCircleLine, RiCloseLine, RiCoinsLine, RiFireLine, RiTimeLine } from "react-icons/ri";
+import { RiArrowRightLine, RiArrowRightSLine, RiCheckboxCircleLine, RiCloseLine, RiCoinsLine, RiEyeLine, RiFireLine, RiTimeLine } from "react-icons/ri";
 
 import { Header } from "../../components/Header";
+import { WarningModal } from "../../components/Modal/WarningModal";
 import { Sidebar } from "../../components/Sidebar";
 import { useHistory, UserHistory } from "../../hooks/useHistory";
+import { useModal } from "../../hooks/useModal";
 import { useNotifications } from "../../hooks/useNotifications";
 import { useUserData } from "../../hooks/useUserData";
 import { useWorkouts } from "../../hooks/useWorkouts";
@@ -31,7 +33,16 @@ export default function Workout() {
 
   const [videoProgress, setVideoProgress] = useState<number[]>([]);
   const { addExperiencePoints, addMoney } = useUserData();
-  const { workouts, setWorkouts } = useWorkouts();
+  const [isPaused, setIsPaused] = useState(false);
+  const vimeoRef = useRef(null);
+
+  const {
+    workouts,
+    setWorkouts,
+    setWorkoutsDailyControl,
+    workoutsDailyControl,
+  } = useWorkouts();
+  const [isCompleting, setIsCompleting] = useState(false);
   const { createNotification } = useNotifications();
   const { addToHistory } = useHistory();
   const updatedWorkouts = useMemo(() => [...workouts], [workouts]);
@@ -40,6 +51,21 @@ export default function Workout() {
     (workout) => workout.id === Number(workooutId)
   );
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen: globalOnOpen, defineModalComponent } = useModal();
+
+  useEffect(() => {
+    if (workoutsDailyControl >= 2) {
+      defineModalComponent(
+        <WarningModal
+          title="Atenção!"
+          message="A partir de agora, você não ganhará moedas após a conclusão dos treinos, pois já atingiu o limite de ganho diário. Amanhã você poderá ganhar mais moedas. Let's move on!"
+        />
+      );
+      globalOnOpen();
+    }
+    console.log({ workoutsDailyControl });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [workoutsDailyControl]);
 
   useEffect(() => {
     const history: UserHistory = {
@@ -53,10 +79,20 @@ export default function Workout() {
     const workout = updatedWorkouts.find(
       (workout) => workout.id === Number(workooutId)
     );
+    setVideoProgress([0]);
+    workout.progress = [];
+    setIsCompleting(true);
     workout.isCompleted = true;
+    workout.watchedTimes += 1;
+    setWorkoutsDailyControl(() => {
+      return workoutsDailyControl + 1;
+    });
     onOpen();
     addExperiencePoints(50);
-    addMoney(10);
+    if (workoutsDailyControl < 2) {
+      addMoney(10);
+    }
+
     createNotification(`Você concluiu a aula: ${workout.title}`);
     setWorkouts(updatedWorkouts);
     const history: UserHistory = {
@@ -68,7 +104,8 @@ export default function Workout() {
   }, [updatedWorkouts]);
 
   useEffect(() => {
-    if (videoProgress.length > 5 && !workout.isCompleted) {
+    if (videoProgress.length > 100) {
+      setIsPaused(true);
       setCompletedWorkout();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,10 +114,22 @@ export default function Workout() {
   function handleVideoProgress({ seconds, percent, duration }: VideoData) {
     const currentPercent = Math.ceil(percent * 100);
 
-    if (!workout.progress.includes(currentPercent)) {
-      workout.progress.push(currentPercent);
+    if (!isCompleting) {
       workout.currentTime = seconds;
-      setVideoProgress([...workout.progress]);
+    } else {
+      workout.currentTime = 0;
+      if (vimeoRef.current) vimeoRef.current?.player.setCurrentTime(0);
+    }
+
+    if (!workout.progress.includes(currentPercent)) {
+      if (!isCompleting) {
+        workout.progress.push(currentPercent);
+        setVideoProgress([...workout.progress]);
+      } else {
+        setIsCompleting(false);
+        setVideoProgress([0]);
+        workout.progress = [0];
+      }
       setWorkouts(updatedWorkouts);
     }
   }
@@ -122,25 +171,32 @@ export default function Workout() {
             >
               <strong>Ótimo!</strong> Você concluiu este treino e ganhou:
             </Text>
-            <SimpleGrid columns={[1, 2]} spacing={10} mb={7}>
-              <Flex alignItems={"center"} justifyContent={"center"}>
-                {/* <Icon
+            <SimpleGrid
+              columns={workoutsDailyControl <= 2 ? [1, 2] : [1]}
+              spacing={10}
+              mb={7}
+            >
+              {workoutsDailyControl <= 2 && (
+                <Flex alignItems={"center"} justifyContent={"center"}>
+                  {/* <Icon
                   fontSize={"5xl"}
                   color={"gray.100"}
                   as={FiBarChart}
                   mr={2}
                 ></Icon> */}
-                <Image
-                  maxW={200}
-                  minW={175}
-                  w={"100%"}
-                  alt="movecoins"
-                  src="/movecoins.png"
-                ></Image>
-                {/* <Text fontSize={"3xl"} color={"gray.100"}>
+                  <Image
+                    maxW={200}
+                    minW={175}
+                    w={"100%"}
+                    alt="movecoins"
+                    src="/movecoins.png"
+                  ></Image>
+                  {/* <Text fontSize={"3xl"} color={"gray.100"}>
                   + 50 <strong>XP</strong>
                 </Text> */}
-              </Flex>
+                </Flex>
+              )}
+
               <Flex alignItems={"center"} justifyContent={"center"} mx={2}>
                 {/* <Icon
                   fontSize={"5xl"}
@@ -218,7 +274,9 @@ export default function Workout() {
                         color={"green.400"}
                       ></Icon>
                       <Text fontSize={"lg"} color={"green.400"}>
-                        Treino concluído
+                        {`Treino concluído ${workout.watchedTimes} ${
+                          workout.watchedTimes > 1 ? "vezes" : "vez"
+                        }`}
                       </Text>
                     </Flex>
                     <Flex
@@ -290,6 +348,8 @@ export default function Workout() {
                 <Box as={"div"} mb={"4"} borderRadius={"8"} overflow={"hidden"}>
                   {!!workout && (
                     <Vimeo
+                      ref={vimeoRef}
+                      paused={isPaused}
                       responsive
                       video={workout.videoId}
                       showTitle={false}
@@ -297,6 +357,9 @@ export default function Workout() {
                       showPortrait={false}
                       onTimeUpdate={handleVideoProgress}
                       start={workout.currentTime}
+                      onPlay={() => {
+                        setIsPaused(false);
+                      }}
                     />
                   )}
                 </Box>
@@ -323,29 +386,42 @@ export default function Workout() {
                   </HStack>
 
                   <HStack>
-                    <Text as="small" fontWeight="bold" color="green.400">
-                      {!!workout && workout.progress.length > 0
-                        ? `${workout.progress.length - 1}%`
-                        : "0%"}
-                    </Text>
-                    <Flex
-                      flex="1"
-                      height="1"
-                      width={["8", "20"]}
-                      bg="gray.100"
-                      borderRadius="full"
-                      overflow="hidden"
-                    >
-                      <Box
-                        width={
-                          !!workout && workout.progress.length > 0
-                            ? `${workout.progress.length - 1}%`
-                            : "0%"
-                        }
-                        height="100%"
-                        bg="green.400"
-                      ></Box>
-                    </Flex>
+                    <HStack spacing={1}>
+                      <Text as="small" fontWeight="bold" color="green.400">
+                        {!!workout && workout.progress.length > 0
+                          ? `${workout.progress.length - 1}%`
+                          : "0%"}
+                      </Text>
+                      <Flex
+                        flex="1"
+                        height="1"
+                        width={["8", "10"]}
+                        bg="gray.100"
+                        borderRadius="full"
+                        overflow="hidden"
+                      >
+                        <Box
+                          width={
+                            !!workout && workout.progress.length > 0
+                              ? `${workout.progress.length - 1}%`
+                              : "0%"
+                          }
+                          height="100%"
+                          bg="green.400"
+                        ></Box>
+                      </Flex>
+                    </HStack>
+
+                    <HStack spacing={1}>
+                      <Icon
+                        display={"inline-block"}
+                        color="blue.400"
+                        as={RiEyeLine}
+                      />
+                      <Text as="small" fontWeight="bold" color="blue.400">
+                        {workout.watchedTimes}
+                      </Text>
+                    </HStack>
                   </HStack>
                 </Flex>
               </Box>

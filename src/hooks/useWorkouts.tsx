@@ -13,11 +13,14 @@ export interface Workout {
   isCompleted: boolean;
   feelingAfterWorkout?: 1 | 2 | 3;
   thumbnail: string;
+  watchedTimes: number;
 }
 
 interface WorkoutsContextData {
   workouts: Array<Workout>;
   setWorkouts: React.Dispatch<SetStateAction<Workout[]>>;
+  workoutsDailyControl: number;
+  setWorkoutsDailyControl: React.Dispatch<SetStateAction<number>>;
 }
 
 interface WorkoutsProviderProps {
@@ -30,6 +33,7 @@ const WorkoutsContext = createContext<WorkoutsContextData>(
 
 export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [workoutsDailyControl, setWorkoutsDailyControl] = useState(0);
 
   useEffect(() => {
     console.log("init");
@@ -48,6 +52,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-iniciante.jpg",
+        watchedTimes: 0,
       },
       {
         id: 2,
@@ -62,6 +67,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-iniciante-2.jpg",
+        watchedTimes: 0,
       },
       {
         id: 3,
@@ -76,6 +82,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/avancado-1.jpg",
+        watchedTimes: 0,
       },
       {
         id: 4,
@@ -90,6 +97,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/avancado-2.jpg",
+        watchedTimes: 0,
       },
       {
         id: 5,
@@ -104,6 +112,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-mobilidade-iniciante.jpg",
+        watchedTimes: 0,
       },
       {
         id: 6,
@@ -118,6 +127,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/mobilidade-cadeira.jpg",
+        watchedTimes: 0,
       },
 
       {
@@ -133,6 +143,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-alongamento.jpg",
+        watchedTimes: 0,
       },
       {
         id: 8,
@@ -147,6 +158,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/alongamento-cervical.jpg",
+        watchedTimes: 0,
       },
       {
         id: 9,
@@ -161,6 +173,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-meditacao.jpg",
+        watchedTimes: 0,
       },
       {
         id: 10,
@@ -175,6 +188,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/meditacao-insonia.jpg",
+        watchedTimes: 0,
       },
       {
         id: 11,
@@ -189,6 +203,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-geral.jpg",
+        watchedTimes: 0,
       },
       {
         id: 12,
@@ -203,6 +218,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/treino-geral-basico.jpg",
+        watchedTimes: 0,
       },
       {
         id: 13,
@@ -217,6 +233,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/yoga-saudacao.jpg",
+        watchedTimes: 0,
       },
       {
         id: 14,
@@ -231,6 +248,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/yoga-flexibilidade.jpg",
+        watchedTimes: 0,
       },
       {
         id: 15,
@@ -245,6 +263,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/respiracao-completa.jpg",
+        watchedTimes: 0,
       },
       {
         id: 16,
@@ -259,13 +278,21 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
         progress: [0],
         isCompleted: false,
         thumbnail: "/respiracao-corpo.jpg",
+        watchedTimes: 0,
       },
     ];
     setWorkouts(workoutData);
   }, []);
 
   return (
-    <WorkoutsContext.Provider value={{ workouts, setWorkouts }}>
+    <WorkoutsContext.Provider
+      value={{
+        workouts,
+        setWorkouts,
+        workoutsDailyControl,
+        setWorkoutsDailyControl,
+      }}
+    >
       {children}
     </WorkoutsContext.Provider>
   );
