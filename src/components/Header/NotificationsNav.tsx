@@ -5,48 +5,34 @@ import { RiCloseCircleLine, RiNotification3Line, RiNotificationLine, RiUserAddLi
 import { useNotifications } from "../../hooks/useNotifications";
 
 export function NotificationsNav() {
-  const useOutsideClick = (callback) => {
-    const ref: any = useRef(null);
-
-    useEffect(() => {
-      const handleClick = (event) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-          callback();
-        }
-      };
-
-      document.addEventListener("click", handleClick);
-
-      return () => {
-        document.removeEventListener("click", handleClick);
-      };
-    }, [ref]);
-
-    return ref;
-  };
-
-  function handleClickOutside() {
-    // setShowNotifications(false);
-    console.log("outsideClick");
-  }
-
-  const ref = useOutsideClick(handleClickOutside);
-
   const [showNotifications, setShowNotifications] = useState(false);
-
   const { notifications, removeNotification, removeAllNotifications } =
     useNotifications();
-
-  function handleClick() {
-    console.log("click inside");
-  }
 
   function handleShowNotifications() {
     setShowNotifications(!showNotifications);
   }
 
+  const ref = useRef(null);
+  const onClickOutside = () => {
+    setShowNotifications(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        onClickOutside();
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
   return (
-    <Flex onClick={handleClick} ref={ref} mx={["6", "8"]} position={"relative"}>
+    <Flex ref={ref} mx={["6", "8"]} position={"relative"}>
       <Flex
         as={"button"}
         bg={showNotifications ? "gray.100" : "gray.700"}
