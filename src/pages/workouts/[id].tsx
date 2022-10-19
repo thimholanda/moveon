@@ -36,31 +36,19 @@ export default function Workout() {
   const [isPaused, setIsPaused] = useState(false);
   const vimeoRef = useRef(null);
 
-  const {
-    workouts,
-    setWorkouts,
-    setWorkoutsDailyControl,
-    workoutsDailyControl,
-  } = useWorkouts();
+  const { workouts, setWorkouts, setWorkoutsDailyControl, workoutsDailyControl } = useWorkouts();
   const [isCompleting, setIsCompleting] = useState(false);
   const { createNotification } = useNotifications();
   const { addToHistory } = useHistory();
   const updatedWorkouts = useMemo(() => [...workouts], [workouts]);
 
-  const workout = updatedWorkouts.find(
-    (workout) => workout.id === Number(workooutId)
-  );
+  const workout = updatedWorkouts.find((workout) => workout.id === Number(workooutId));
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { onOpen: globalOnOpen, defineModalComponent } = useModal();
 
   useEffect(() => {
     if (workoutsDailyControl >= 2) {
-      defineModalComponent(
-        <WarningModal
-          title="Atenção!"
-          message="A partir de agora, você não ganhará moedas após a conclusão dos treinos, pois já atingiu o limite de ganho diário. Amanhã você poderá ganhar mais moedas. Let's move on!"
-        />
-      );
+      defineModalComponent(<WarningModal title="Atenção!" message="A partir de agora, você não ganhará moedas após a conclusão dos treinos, pois já atingiu o limite de ganho diário. Amanhã você poderá ganhar mais moedas. Let's move on!" />);
       globalOnOpen();
     }
     console.log({ workoutsDailyControl });
@@ -76,9 +64,7 @@ export default function Workout() {
   }, []);
 
   const setCompletedWorkout = useCallback(() => {
-    const workout = updatedWorkouts.find(
-      (workout) => workout.id === Number(workooutId)
-    );
+    const workout = updatedWorkouts.find((workout) => workout.id === Number(workooutId));
     setVideoProgress([0]);
     workout.progress = [];
     setIsCompleting(true);
@@ -104,7 +90,7 @@ export default function Workout() {
   }, [updatedWorkouts]);
 
   useEffect(() => {
-    if (videoProgress.length > 2) {
+    if (videoProgress.length > 10) {
       //
       setIsPaused(true);
       setCompletedWorkout();
@@ -150,33 +136,13 @@ export default function Workout() {
         // scrollBehavior="inside"
       >
         <ModalOverlay bgColor={"rgba(6, 6, 7, .96)"} />
-        <ModalContent
-          borderRadius={10}
-          m={5}
-          border={"1px solid white"}
-          borderColor={"gray.400"}
-          bg={"rgba(179, 181, 198, 0.1)"}
-        >
+        <ModalContent borderRadius={10} m={5} border={"1px solid white"} borderColor={"gray.400"} bg={"rgba(179, 181, 198, 0.1)"}>
           <Flex p={5} direction={"column"} alignItems={"center"}>
-            <Icon
-              mb={3}
-              fontSize={"6xl"}
-              color={"green.400"}
-              as={RiCheckboxCircleLine}
-            ></Icon>
-            <Text
-              color={"gray.200"}
-              fontSize={"2xl"}
-              textAlign={"center"}
-              mb={10}
-            >
+            <Icon mb={3} fontSize={"6xl"} color={"green.400"} as={RiCheckboxCircleLine}></Icon>
+            <Text color={"gray.200"} fontSize={"2xl"} textAlign={"center"} mb={10}>
               <strong>Ótimo!</strong> Você concluiu este treino e ganhou:
             </Text>
-            <SimpleGrid
-              columns={workoutsDailyControl <= 2 ? [1, 2] : [1]}
-              spacing={10}
-              mb={7}
-            >
+            <SimpleGrid columns={workoutsDailyControl <= 2 ? [1, 2] : [1]} spacing={10} mb={7}>
               {workoutsDailyControl <= 2 && (
                 <Flex alignItems={"center"} justifyContent={"center"}>
                   {/* <Icon
@@ -185,13 +151,7 @@ export default function Workout() {
                   as={FiBarChart}
                   mr={2}
                 ></Icon> */}
-                  <Image
-                    maxW={200}
-                    minW={175}
-                    w={"100%"}
-                    alt="movecoins"
-                    src="/movecoins.png"
-                  ></Image>
+                  <Image maxW={200} minW={175} w={"100%"} alt="movecoins" src="/movecoins.png"></Image>
                   {/* <Text fontSize={"3xl"} color={"gray.100"}>
                   + 50 <strong>XP</strong>
                 </Text> */}
@@ -207,32 +167,12 @@ export default function Workout() {
                 <Text fontSize={"3xl"} color={"gray.100"}>
                   + 100
                 </Text> */}
-                <Image
-                  maxW={200}
-                  minW={175}
-                  w={"100%"}
-                  alt="movecoins"
-                  src="/xp.png"
-                ></Image>
+                <Image maxW={200} minW={175} w={"100%"} alt="movecoins" src="/xp.png"></Image>
               </Flex>
             </SimpleGrid>
           </Flex>
-          <Flex
-            borderTop={"1px solid white"}
-            borderColor={"gray.400"}
-            py={10}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Button
-              py="5"
-              cursor="pointer"
-              size="sm"
-              fontSize="lg"
-              colorScheme="pink"
-              rightIcon={<Icon as={RiArrowRightLine} fontSize="20" />}
-              onClick={onClose}
-            >
+          <Flex borderTop={"1px solid white"} borderColor={"gray.400"} py={10} alignItems={"center"} justifyContent={"center"}>
+            <Button py="5" cursor="pointer" size="sm" fontSize="lg" colorScheme="pink" rightIcon={<Icon as={RiArrowRightLine} fontSize="20" />} onClick={onClose}>
               Continuar
             </Button>
           </Flex>
@@ -259,88 +199,21 @@ export default function Workout() {
             </Heading>
 
             <Box p={["4", "8"]} bg="gray.800" borderRadius="8" pb="4">
-              <Box
-                h={isWideVersion ? "100%" : "auto"}
-                bg="gray.800"
-                borderRadius="8"
-                pb="7"
-              >
+              <Box h={isWideVersion ? "100%" : "auto"} bg="gray.800" borderRadius="8" pb="7">
                 {!!workout && !!workout.isCompleted && (
                   <>
                     <Flex alignItems={"center"} mb={"5"}>
-                      <Icon
-                        fontSize={"2xl"}
-                        mr={1}
-                        as={RiCheckboxCircleLine}
-                        color={"green.400"}
-                      ></Icon>
+                      <Icon fontSize={"2xl"} mr={1} as={RiCheckboxCircleLine} color={"green.400"}></Icon>
                       <Text fontSize={"lg"} color={"green.400"}>
-                        {`Treino concluído ${workout.watchedTimes} ${
-                          workout.watchedTimes > 1 ? "vezes" : "vez"
-                        }`}
+                        {`Treino concluído ${workout.watchedTimes} ${workout.watchedTimes > 1 ? "vezes" : "vez"}`}
                       </Text>
                     </Flex>
-                    <Flex
-                      borderRadius={"10"}
-                      mb={5}
-                      px={6}
-                      py={4}
-                      bg={"gray.900"}
-                      alignItems={"center"}
-                      justifyContent={"space-between"}
-                    >
+                    <Flex borderRadius={"10"} mb={5} px={6} py={4} bg={"gray.900"} alignItems={"center"} justifyContent={"space-between"}>
                       <Text mr={2}>Como você se sentiu após o treino?</Text>
                       <Flex>
-                        <IconButton
-                          bg={"gray.700"}
-                          borderRadius={"full"}
-                          p={"0"}
-                          fontSize={"2xl"}
-                          aria-label="não muito bem"
-                          icon={<BiSad />}
-                          color={
-                            !!workout &&
-                            !!workout.feelingAfterWorkout &&
-                            workout.feelingAfterWorkout === 1
-                              ? "red.400"
-                              : "gray.400"
-                          }
-                          mr={2}
-                          onClick={() => handleFellingAfterWorkout(1)}
-                        ></IconButton>
-                        <IconButton
-                          bg={"gray.700"}
-                          borderRadius={"full"}
-                          p={"0"}
-                          fontSize={"2xl"}
-                          aria-label="bem"
-                          color={
-                            !!workout &&
-                            !!workout.feelingAfterWorkout &&
-                            workout.feelingAfterWorkout === 2
-                              ? "orange.400"
-                              : "gray.400"
-                          }
-                          icon={<BiMeh />}
-                          mr={2}
-                          onClick={() => handleFellingAfterWorkout(2)}
-                        ></IconButton>
-                        <IconButton
-                          bg={"gray.700"}
-                          borderRadius={"full"}
-                          p={"0"}
-                          fontSize={"2xl"}
-                          aria-label="muito bem"
-                          color={
-                            !!workout &&
-                            !!workout.feelingAfterWorkout &&
-                            workout.feelingAfterWorkout === 3
-                              ? "green.400"
-                              : "gray.400"
-                          }
-                          icon={<BiSmile />}
-                          onClick={() => handleFellingAfterWorkout(3)}
-                        ></IconButton>
+                        <IconButton bg={"gray.700"} borderRadius={"full"} p={"0"} fontSize={"2xl"} aria-label="não muito bem" icon={<BiSad />} color={!!workout && !!workout.feelingAfterWorkout && workout.feelingAfterWorkout === 1 ? "red.400" : "gray.400"} mr={2} onClick={() => handleFellingAfterWorkout(1)}></IconButton>
+                        <IconButton bg={"gray.700"} borderRadius={"full"} p={"0"} fontSize={"2xl"} aria-label="bem" color={!!workout && !!workout.feelingAfterWorkout && workout.feelingAfterWorkout === 2 ? "orange.400" : "gray.400"} icon={<BiMeh />} mr={2} onClick={() => handleFellingAfterWorkout(2)}></IconButton>
+                        <IconButton bg={"gray.700"} borderRadius={"full"} p={"0"} fontSize={"2xl"} aria-label="muito bem" color={!!workout && !!workout.feelingAfterWorkout && workout.feelingAfterWorkout === 3 ? "green.400" : "gray.400"} icon={<BiSmile />} onClick={() => handleFellingAfterWorkout(3)}></IconButton>
                       </Flex>
                     </Flex>
                   </>
@@ -374,9 +247,7 @@ export default function Workout() {
                     )}
                     <Flex alignItems="center">
                       <Icon mr="1" as={RiTimeLine} />
-                      <Text as="small">
-                        {!!workout && Math.floor(workout.time / 60)} min.
-                      </Text>
+                      <Text as="small">{!!workout && Math.floor(workout.time / 60)} min.</Text>
                     </Flex>
                     <Flex alignItems="center">
                       <Icon mr="1" color="orange.400" as={RiFireLine} />
@@ -389,36 +260,15 @@ export default function Workout() {
                   <HStack>
                     <HStack spacing={1}>
                       <Text as="small" fontWeight="bold" color="green.400">
-                        {!!workout && workout.progress.length > 0
-                          ? `${workout.progress.length - 1}%`
-                          : "0%"}
+                        {!!workout && workout.progress.length > 0 ? `${workout.progress.length - 1}%` : "0%"}
                       </Text>
-                      <Flex
-                        flex="1"
-                        height="1"
-                        width={["8", "10"]}
-                        bg="gray.100"
-                        borderRadius="full"
-                        overflow="hidden"
-                      >
-                        <Box
-                          width={
-                            !!workout && workout.progress.length > 0
-                              ? `${workout.progress.length - 1}%`
-                              : "0%"
-                          }
-                          height="100%"
-                          bg="green.400"
-                        ></Box>
+                      <Flex flex="1" height="1" width={["8", "10"]} bg="gray.100" borderRadius="full" overflow="hidden">
+                        <Box width={!!workout && workout.progress.length > 0 ? `${workout.progress.length - 1}%` : "0%"} height="100%" bg="green.400"></Box>
                       </Flex>
                     </HStack>
 
                     <HStack spacing={1}>
-                      <Icon
-                        display={"inline-block"}
-                        color="blue.400"
-                        as={RiEyeLine}
-                      />
+                      <Icon display={"inline-block"} color="blue.400" as={RiEyeLine} />
                       <Text as="small" fontWeight="bold" color="blue.400">
                         {workout && workout.watchedTimes}
                       </Text>
@@ -430,15 +280,7 @@ export default function Workout() {
               <HStack justifyContent={"center"}>
                 <Link href="/workouts" passHref>
                   <a>
-                    <Button
-                      mt="5"
-                      py="5"
-                      cursor="pointer"
-                      size="sm"
-                      fontSize="lg"
-                      colorScheme="pink"
-                      rightIcon={<Icon as={RiCloseLine} fontSize="20" />}
-                    >
+                    <Button mt="5" py="5" cursor="pointer" size="sm" fontSize="lg" colorScheme="pink" rightIcon={<Icon as={RiCloseLine} fontSize="20" />}>
                       Fechar treino
                     </Button>
                   </a>
