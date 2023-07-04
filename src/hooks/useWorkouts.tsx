@@ -96,7 +96,7 @@ export function WorkoutsProvider({ children }: WorkoutsProviderProps) {
       {
         id: 5,
         title: "Mobilidade Iniciante",
-        videoId: "309667481",
+        videoId: "208488746",
         category: "Mobilidade",
         time: 332,
         calories: 120,
