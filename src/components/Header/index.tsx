@@ -41,9 +41,9 @@ export function Header() {
         )}
         <Logo />
 
-        {!!isWideVersion && <Logo />}
+        {/* {!!isWideVersion && <Logo />} */}
 
-        {!!isMdVersion && <ProgressBar maxWidth="200" margin="-12px" />}
+        {!!isMdVersion && <ProgressBar maxWidth="200" />}
 
         <Flex align="center" ml="auto">
           <NotificationsNav />
@@ -52,7 +52,7 @@ export function Header() {
       </Flex>
       {!isMdVersion && (
         <Flex justifyContent={"space-between"} alignItems={"center"} mb={4} pe={3}>
-          <ProgressBar maxWidth="calc(50%)" margin="-12px" />
+          <ProgressBar maxWidth="calc(50%)" />
           <Box mr="4" textAlign="right">
             <Text color="white">
               <Image width={"40"} height={"37"} src={"/icon-movecoins.png"} alt={"Movecoins"}></Image>

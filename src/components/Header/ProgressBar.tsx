@@ -1,10 +1,16 @@
-import { Box, Flex, Icon, Text } from "@chakra-ui/react";
+import { FlexProps } from "@chakra-ui/core";
+import { Box, ComponentWithAs, Flex, Icon, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 import { useUserData } from "../../hooks/useUserData";
 
-export function ProgressBar() {
+interface ProgressBarProps {
+  maxWidth: string;
+  margin?: string;
+}
+
+export const ProgressBar = ({ maxWidth, margin }: ProgressBarProps) => {
   const { levelPoints, level, experiencePoints } = useUserData();
   const [levelPercent, setLevelPercent] = useState(0);
   const totalLevelPoints = 250;
@@ -15,16 +21,8 @@ export function ProgressBar() {
   }, [levelPoints, levelPercent]);
 
   return (
-    <Flex flex="1" height="6" maxWidth="200" ml="6" position="relative">
-      <Flex
-        height="1"
-        width="100%"
-        alignSelf="center"
-        position="relative"
-        bg="gray.100"
-        borderRadius="full"
-        overflow="hidden"
-      >
+    <Flex flex="1" height="6" maxWidth={maxWidth} ml="6" position="relative" margin={margin}>
+      <Flex height="1" width="100%" alignSelf="center" position="relative" bg="gray.100" borderRadius="full" overflow="hidden">
         <Box width={`${levelPercent}%`} height="100%" bg="blue.400"></Box>
       </Flex>
 
@@ -49,29 +47,16 @@ export function ProgressBar() {
       </Flex>
 
       <Box>
-        <Text
-          as="small"
-          color="blue.300"
-          position="absolute"
-          left="0"
-          bottom="-12px"
-        >
+        <Text as="small" color="blue.300" position="absolute" left="0" bottom="-12px">
           {levelPercent}%
         </Text>
       </Box>
 
       <Box>
-        <Text
-          as="small"
-          color="blue.300"
-          position="absolute"
-          left="0"
-          top="-12px"
-          fontWeight="bold"
-        >
+        <Text as="small" color="blue.300" position="absolute" left="0" top="-12px" fontWeight="bold">
           Level {level} | {experiencePoints}xp
         </Text>
       </Box>
     </Flex>
   );
-}
+};

@@ -9,10 +9,7 @@ interface InputProps extends ChakraInputProps {
   isTransparent?: boolean;
 }
 
-const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { name, label, error = null, isTransparent = false, ...rest },
-  ref
-) => {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, label, error = null, isTransparent = false, ...rest }, ref) => {
   return (
     <FormControl isInvalid={!!error}>
       {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
