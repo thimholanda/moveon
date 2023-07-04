@@ -33,6 +33,7 @@ export function EvaluationModal() {
   const [weight, setWeight] = useState("");
 
   function handleClose() {
+    // remove
     const evaluation: Evaluation = {
       squats,
       abs,
