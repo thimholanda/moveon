@@ -16,18 +16,13 @@ export default function Profile({ showProfileData = true }: ProfileProps) {
       {showProfileData && (
         <Box mr="4" textAlign="right">
           <Text color="white">
-            <Image
-              width={"40"}
-              height={"37"}
-              src={"/icon-movecoins.png"}
-              alt={"Movecoins"}
-            ></Image>
+            <Image width={"40"} height={"37"} src={"/icon-movecoins.png"} alt={"Movecoins"}></Image>
             {/* <Icon color={"white"} as={RiCoinsLine} /> */}
             {money}
           </Text>
         </Box>
       )}
-      <Text mx={2}>{name}</Text>
+      <Text mx={2}>{!!name ?? name.split(" ")[0]}</Text>
       <Avatar src={fileDataURL} size="md" name={name} />
     </Flex>
   );

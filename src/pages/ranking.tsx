@@ -32,7 +32,7 @@ export default function Ranking() {
               <Table colorScheme="whiteAlpha">
                 <Thead>
                   <Tr>
-                    <Th></Th>
+                    {!!isWideVersion && <Th></Th>}
                     <Th>Usuário</Th>
                     <Th>Movecoins</Th>
                     {/* <Th width='8'></Th> */}
@@ -40,7 +40,7 @@ export default function Ranking() {
                 </Thead>
                 <Tbody>
                   <Tr>
-                    <Td>1º</Td>
+                    {!!isWideVersion && <Td>1º</Td>}
                     <Td>
                       <HStack>
                         <Avatar src={fileDataURL} size="md" name={name} />
@@ -68,12 +68,7 @@ export default function Ranking() {
                     <Td>
                       <Text color="gray.300">
                         {/* <Icon as={RiCoinsLine} /> */}
-                        <Image
-                          width={"40"}
-                          height={"37"}
-                          src={"/icon-movecoins.png"}
-                          alt={"Movecoins"}
-                        ></Image>
+                        <Image width={"40"} height={"37"} src={"/icon-movecoins.png"} alt={"Movecoins"}></Image>
                         {money}
                       </Text>
                     </Td>
