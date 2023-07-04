@@ -37,6 +37,7 @@ export function Header() {
                   Navigation"
             pt="1.5"
             mr="2"
+            ml="-2"
           ></IconButton>
         )}
         <Logo />
