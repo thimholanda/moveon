@@ -47,7 +47,7 @@ export default function Workout() {
   const { onOpen: globalOnOpen, defineModalComponent } = useModal();
 
   useEffect(() => {
-    if (workoutsDailyControl >= 2) {
+    if (workoutsDailyControl >= 11) {
       defineModalComponent(<WarningModal title="Atenção!" message="A partir de agora, você não ganhará moedas após a conclusão dos treinos, pois já atingiu o limite de ganho diário. Amanhã você poderá ganhar mais moedas. Let's move on!" />);
       globalOnOpen();
     }
